@@ -1209,9 +1209,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
 
             // Parse headings from HTML
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlInput;
-            const headings = tempDiv.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            const parsedDocument = new DOMParser().parseFromString(htmlInput, 'text/html');
+            const headings = parsedDocument.querySelectorAll('h1, h2, h3, h4, h5, h6');
             
             if (headings.length === 0) {
                 resultsContainer.innerHTML = `
