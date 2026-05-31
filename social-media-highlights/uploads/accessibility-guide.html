@@ -1208,11 +1208,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 return;
             }
 
-            // Parse headings from HTML
-            const parsedDocument = new DOMParser().parseFromString(htmlInput, 'text/html');
-            const headings = parsedDocument.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            // Extract heading levels from text without interpreting input as HTML
+            const headingMatches = htmlInput.match(/<\s*h([1-6])(?:\s[^>]*)?>/gi) || [];
             
-            if (headings.length === 0) {
+            if (headingMatches.length === 0) {
                 resultsContainer.innerHTML = `
                     <div class="result-item result-warning">
                         <span class="result-icon">⚠️</span>
@@ -1222,7 +1221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 return;
             }
 
-            const headingLevels = Array.from(headings).map(h => parseInt(h.tagName.charAt(1)));
+            const headingLevels = headingMatches.map(match => parseInt(match.match(/<\s*h([1-6])/i)[1], 10));
             let resultsHTML = '';
             let hasH1 = headingLevels.includes(1);
             
