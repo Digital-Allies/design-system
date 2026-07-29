@@ -1,54 +1,65 @@
 # Digital Allies CMS — Documentation
 
-**The CMS is one thing: the Connected CMS Dashboard at `dashboard.html`**
-(served by `app.js` + `style.css`). Send developers and collaborators here.
-Earlier prototypes live in `_archive/` for reference only.
+**The canonical reference is `cms-preview.html`** — one standalone file
+covering every admin surface (Dashboard, Pages, Page Editor, The Press Office,
+Projects, Research, Learn, The Workshop, Settings) with **light/dark** and
+**desktop/mobile** as toggles rather than separate mocks. Send developers and
+collaborators here first; `index.html` is the hub that links everything.
+
+Real implementation lives in `da-platform/tools/build-workflows` (Next.js App
+Router + Supabase), deployed at **cms.digitalallies.net**. This folder is the
+design source of truth, not the running app.
 
 ## What the CMS must include
 
-Three core jobs (full detail in the spec):
+1. **Website page editing** — build pages by stacking blocks from a component
+   library (hero, services, testimonials, rich text, contact form, CTA, …);
+   reorder, edit inline, draft/publish. Blocks are stored as one `jsonb` array
+   on the `pages` row — not normalized section rows.
+2. **Global design-token editing** — edit the brand tokens the whole site reads
+   (colors, type, spacing) from one place. Scoped in `THEME_ENGINE_PLAN.md`
+   (extend `settings` with `theme_*` keys); tokens reach the public site as
+   `--tok-*` variables via `SiteTheme.tsx`.
+3. **Blog & article publishing** — posts live in a separate `posts` table with a
+   Tiptap editor. "The Press Office" is DA's own label; client instances use
+   generic module names.
 
-1. **Website page editing** — build pages by stacking sections from a
-   component library (hero, departments, field notes, rich text, CTA, …);
-   reorder, edit inline, draft/publish.
-2. **Global design-system editing** — edit the brand tokens the whole site
-   reads (colors, type, spacing) from one place; change once, update every page.
-3. **Blog & article publishing** — The Press Office: write, schedule, and
-   publish posts, press releases, and case studies.
+## Naming rule (decided, not yet built)
 
-Plus the content calendar, projects, research, the dev workshop, and settings.
+Module labels ship **generic for every client** — Services, Testimonials, Blog,
+Articles, Contact, Settings. DA's own vocabulary (The Departments, Field Notes,
+The Press Office, Command Center) is a **per-tenant label map** over the same
+nav/registry data, applied only to DA's instance. Today `AdminNav.tsx` still
+shows DA jargon to every tenant — that label map is real, unbuilt code work.
 
-## Anthony's task tracker
-
-**`anthony-tasks.html`** — visual check-off list of every open task that
-needs Anthony specifically (Supabase/Vercel/registrar clicks, calls needing
-his judgment), grouped by urgency, synced from `da-platform/STATUS.md` +
-`BUILD-SCHEDULE.md`. Checkbox state persists locally per device. Tell Claude
-what changed in a session and the list gets updated to match.
-
-## Documentation files
-
-- **`../CMS_IMPLEMENTATION_PLAN.html`** — the specification: what the CMS must
-  include + the phased build plan, schema, and API endpoints. **Start here.**
-- **`INTEGRATION_OVERVIEW.md`** — the big picture: public site, admin dashboard, database.
-- **`WIRING_GUIDE.md`** — how to connect website → dashboard → Supabase.
-
-## Build status
-
-`dashboard.html` + `app.js` are a working front-end prototype with in-memory
-sample data — the shell, navigation, and basic create/edit/delete are real and
-clickable. The page builder, the section library, the full design-token editor,
-and live publishing are specified in the plan and get built against a backend.
-
-## What's here
+## Files
 
 ```
 cms/
-├── dashboard.html              # THE CMS — canonical admin dashboard
-├── app.js, style.css           # dashboard logic + styles
-├── README.md                   # this file
-├── INTEGRATION_OVERVIEW.md     # architecture
-├── WIRING_GUIDE.md             # how to connect everything
-├── index.html                  # CMS landing (links here)
-└── _archive/                   # superseded prototypes (reference only)
+├── cms-preview.html          # CANONICAL — all modules, light/dark, desktop/mobile
+├── page-editor.html          # deep prototype: block library, tenant preview, tier gate
+├── index.html                # CMS hub (links everything here)
+├── anthony-tasks.html        # open dashboard-only tasks, synced from TODO.md
+├── PAGE_EDITOR_SPEC.md       # data model, block registry, API surface, reconciliation
+├── INTEGRATION_OVERVIEW.md   # public site / admin / database
+├── WIRING_GUIDE.md           # Supabase env, queries, data flow
+├── CMS Developer Handoff.html
+├── dashboard.html + app.js + style.css   # legacy wired prototype
+└── dashboard-dark.html                    # legacy dark-only mock
 ```
+
+## Build status (repo commit `676d20d3`, synced 2026-07-29)
+
+- Code is built through **Day 18** of the 30-day run: Next.js + Vercel + Supabase
+  clients, schema + RLS, page/settings/collections fetchers, admin pages builder,
+  public `BlockRenderer`, dynamic `[slug]` routes, contact-form block.
+- **Two tenants live plus Atomic Finds**: DA, HCTC, and AF (settings, design
+  tokens, and draft pages all seeded and verified live Jul 25).
+- **Admin login works** on `cms.digitalallies.net`; per-client theming complete.
+- **Open:** PR #9 (multi-tenant dashboard routing) awaiting merge;
+  `security-fixes.sql` + leaked-password protection + the `clients.plan`
+  migration still unapplied; Development / Projects / Content / Pages carry known
+  placeholder gaps. See `anthony-tasks.html`.
+- **Live bug:** `cms-loader.js` on the separate `Digital-Allies/DigitalAllies`
+  repo throws a top-level `ReferenceError`, so `digitalallies.net/learn/` has
+  been stuck on "Loading articles…" — one-line fix, tracked in the tracker.

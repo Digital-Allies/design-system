@@ -64,7 +64,7 @@ footer .sep{color:var(--signal);margin:0 12px}
 <a class="back" href="index.html">← CMS Hub</a>
 <div class="eb" style="margin-top:16px;">Digital Allies · Platform Ops</div>
 <h1>Anthony's tasks.</h1>
-<p class="lede">Everything only you can do — Supabase, Vercel, registrar clicks, and calls that need your judgment. Pulled from <code>da-platform/STATUS.md</code> + <code>BUILD-SCHEDULE.md</code>. Check items off as you clear them; it's saved on this device. Tell me what changed and I'll update the source list.</p>
+<p class="lede">Everything only you can do — Supabase, Vercel, registrar clicks, and calls that need your judgment. Pulled from <code>da-platform/tasks/anthony/TODO.md</code> + <code>STATUS.md</code>, synced 2026-07-29 (repo commit <code>676d20d3</code>). Check items off as you clear them; it's saved on this device. Tell me what changed and I'll update the source list.</p>
 <div class="progress-row">
 <div class="progress-track"><div class="progress-fill" id="pfill"></div></div>
 <span class="progress-label" id="plabel">0 / 0 done</span>
@@ -73,12 +73,12 @@ footer .sep{color:var(--signal);margin:0 12px}
 </div>
 
 <div class="section wrap">
-<div class="section-head"><h2><span class="dot red"></span>Do first — blocking</h2><span class="cap">Priority 0–1</span></div>
+<div class="section-head"><h2><span class="dot red"></span>Do first — blocking</h2><span class="cap">PR #9 · Supabase hardening · live bug</span></div>
 <ul class="list" id="grp-blocking"></ul>
 </div>
 
 <div class="section wrap">
-<div class="section-head"><h2><span class="dot amber"></span>Needs your review or decision</h2><span class="cap">Priority 2–3</span></div>
+<div class="section-head"><h2><span class="dot amber"></span>Needs your review or decision</h2><span class="cap">Vercel/Supabase audit · Atomic Finds · HCTC</span></div>
 <ul class="list" id="grp-decision"></ul>
 </div>
 
@@ -91,20 +91,29 @@ footer .sep{color:var(--signal);margin:0 12px}
 
 <script>
 const TASKS = [
-{id:'t1',grp:'blocking',title:'Apply supabase/security-fixes.sql + enable leaked-password protection',meta:'Supabase SQL editor + Auth toggle · unconfirmed since Jul 16'},
-{id:'t2',grp:'blocking',title:'Repoint atomic-finds-atx Vercel Production Branch to main, redeploy',meta:"Production has been serving 22 commits behind main — this is why cards/reviews looked missing"},
-{id:'t3',grp:'blocking',title:'Run the Atomic Finds commerce-fields migration + catalog seed in Supabase SQL editor',meta:'20260121000000_products_commerce_fields.sql + seed-atomic-finds-catalog.sql'},
-{id:'t4',grp:'blocking',title:'Run the Atomic Finds reviews table migration + seed (19 real reviews)',meta:'20260122000000_reviews_table.sql + seed-atomic-finds-reviews.sql'},
-{id:'t5',grp:'blocking',title:'Review + merge PR #1 (products catalog), confirm applied',meta:'GitHub — Digital-Allies/da-platform'},
-{id:'t6',grp:'decision',title:'Confirm 2026-07-17 Vercel/Supabase audit checklist',meta:'NEXT_PUBLIC_SITE_URL, HCTC legacy anon key, duplicate key pair cleanup, new Resend keys added + old one revoked'},
-{id:'t7',grp:'decision',title:'Decide checkout provider with Jenny (Atomic Finds)',meta:'Blocks native on-site checkout — architecture already provider-agnostic and ready either way'},
-{id:'t8',grp:'decision',title:'Send 5th Atomic Finds product + real product photos',meta:'Blocks completing the 14-item catalog'},
-{id:'t9',grp:'decision',title:'Root-cause digitalallies.net Vercel project having zero env vars',meta:'Site reportedly reads some Supabase tables despite this — flagged, not yet explained'},
-{id:'t10',grp:'decision',title:'Figma Make design trial for Atomic Finds frontend components',meta:'Blocks further AF component build-out'},
-{id:'t11',grp:'ongoing',title:'Weekly: skim commits, confirm Vercel deploys are green',meta:'Every Fri/weekend review slot per BUILD-SCHEDULE.md'},
-{id:'t12',grp:'ongoing',title:'Weekly: back up the Supabase DB',meta:'Dashboard → Database → Backups, or pg_dump — Saturdays'},
+{id:'p0b1',grp:'blocking',title:'Merge PR #9 — multi-tenant dashboard routing fix',meta:'Branch claude/atomic-fines-dashboard-routing-joofve · code complete, Greptile passed, Vercel CI green · waiting on Copilot review, then click Merge'},
+{id:'p0b2',grp:'blocking',title:'Verify AF admin routing post-merge',meta:'Log in as atomicfindsatx@gmail.com on cms.digitalallies.net — dashboard must show AF identity/data, not DA'},
+{id:'p2a',grp:'blocking',title:'Apply supabase/security-fixes.sql',meta:'Supabase project auwhvicpyiwsubucanpb → SQL Editor → paste + Run · still open, clears most of the 6 Security Advisor warnings'},
+{id:'p2b',grp:'blocking',title:'Enable leaked-password protection',meta:'Supabase → Authentication → Providers → Email → toggle on'},
+{id:'p2c',grp:'blocking',title:'Apply the clients.plan column migration',meta:'supabase/migrations/20260109000000_client_plan.sql · unapplied · the Starter/Pro/Agency gate reads this column'},
+{id:'bug1',grp:'blocking',title:'Fix the live cms-loader.js ReferenceError on digitalallies.net',meta:'LIVE-BROKEN since Jul 16 — headers still reference SUPABASE_ANON_KEY, const is supabase_anon_new. /learn/ has shown "Loading articles…" to every visitor. One-line fix in Digital-Allies/DigitalAllies'},
+{id:'bug2',grp:'blocking',title:'Port the escapeHtml + dead tailwind.config fixes to the live site repo',meta:'Verified in da-platform commit 6876c63 (cms-loader.js + 13 HTML files) — the live repo is a separate codebase, needs manual porting'},
+{id:'p1a',grp:'decision',title:'Run the full admin loop once on cms.digitalallies.net',meta:'Log in with a real password → edit a page → post to the Press Office → View live site shows real DA content, not the "My Business" fallback'},
+{id:'p4a',grp:'decision',title:'Add NEXT_PUBLIC_SITE_URL to da-webwssite-build-workflows',meta:'Vercel env var does not exist on that project at all — set to https://cms.digitalallies.net'},
+{id:'p4b',grp:'decision',title:'Confirm healthcare-training-center Supabase keys are current',meta:'Audit found legacy JWT-format keys (eyJhbGc…) — legacy keys are disabled, so HCTC is likely erroring. Paste current Publishable/Secret values, redeploy, load the site'},
+{id:'p4c',grp:'decision',title:'Revoke the unused "default" Supabase key pair',meta:'Two Publishable/Secret pairs exist; the "_new" pair is in use — confirm, then revoke the other'},
+{id:'p4d',grp:'decision',title:'Finish the cms.digitalallies.net domain wiring',meta:'Cloudflare CNAME set to DNS-only (not proxied) + Supabase Auth Site URL / redirect URLs · alias is live, config not confirmed'},
+{id:'p4e',grp:'decision',title:'Add the per-site Resend keys to Vercel and revoke the old one',meta:'New keys generated Jul 17, still only in local .env.local · old shared key was flagged compromised and must be killed in Resend itself'},
+{id:'p5a',grp:'decision',title:'Send the 5th Atomic Finds product + real product photos',meta:'Product 5 was cut off mid-paste; image_url is intentionally null on the seeded items'},
+{id:'p5b',grp:'decision',title:'Decide whether Atomic Finds gets its own Vercel project',meta:'Currently served from atomic-finds-atx · a new project means import da-platform, root tools/build-workflows, NEXT_PUBLIC_CLIENT_ID 443936d5-f92e-480b-b206-c65cfb52bdfc, and hand-pasted keys (free tier allows only 2 integration-synced projects)'},
+{id:'p5c',grp:'decision',title:'Reconcile the two Atomic Finds client IDs',meta:'STATUS/TODO restore 443936d5-… as the AF client, but the linked CMS account records 2afb056f-408d-419d-be2b-d414ffffdd5c — confirm which is authoritative before more seeding'},
+{id:'p5d',grp:'decision',title:'Re-point healthcare-training-center Vercel at the monorepo',meta:'Git → Digital-Allies/da-platform, root tools/build-workflows, NEXT_PUBLIC_CLIENT_ID 7896354c-1d34-4649-85f5-51f2e5a7df6c'},
+{id:'dec1',grp:'decision',title:'Decide the digitalallies.net cutover',meta:'Day 19/20 goal: point the domain at the Next.js engine and retire the static repo — every fix above needs hand-porting until then'},
+{id:'o1',grp:'ongoing',title:'Weekly: skim commits, confirm Vercel deploys are green',meta:'Fri/weekend review slot per BUILD-SCHEDULE.md'},
+{id:'o2',grp:'ongoing',title:'Weekly: back up the Supabase DB',meta:'Dashboard → Database → Backups, or pg_dump — Saturdays'},
+{id:'o3',grp:'ongoing',title:'On every key rotation: hand-update the non-integrated Vercel projects',meta:'healthcare-training-center (and Atomic Finds once it has its own project) do not auto-sync on the free tier'},
 ];
-const KEY='da_anthony_tasks_v1';
+const KEY='da_anthony_tasks_v2';
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return{}}}
 function save(state){localStorage.setItem(KEY,JSON.stringify(state))}
 let state=load();

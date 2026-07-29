@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="CMS Preview — unified" subtitle="Dashboard, Pages, Page Editor, Press Office, Settings — light/dark + desktop/mobile toggles" viewport="1280x900" -->
+<html lang="en" data-theme="light" data-view="desktop">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Allies — CMS Preview</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600;700&display=swap');
+:root{--fh:'Lexend Deca',sans-serif;--fb:'JetBrains Mono',ui-monospace,monospace;--blue:#3A7BD5;--pink:#C86A8E;--green:#1F8A5B;--amber:#B8791F}
+html[data-theme="light"]{--canvas:#F9F6F0;--surface:#FFFFFF;--surface-2:#FCFAED;--chrome:#2D2D2D;--chrome-fg:#F9F6F0;--fg:#2D2D2D;--fg-muted:#6E6A63;--fg-strong:#1A1A1A;--border:rgba(45,45,45,.16);--border-strong:rgba(45,45,45,.32);--hover:rgba(45,45,45,.04);--grid:rgba(45,45,45,.045);--accent:var(--blue);--signal:#A8446C}
+html[data-theme="dark"]{--canvas:#2D2D2D;--surface:rgba(249,246,240,.03);--surface-2:#1E1D1B;--chrome:#1E1D1B;--chrome-fg:#F9F6F0;--fg:#FFFFFF;--fg-muted:#B7B2A8;--fg-strong:#F9F6F0;--border:rgba(249,246,240,.16);--border-strong:rgba(249,246,240,.28);--hover:rgba(249,246,240,.06);--grid:rgba(249,246,240,.06);--accent:#4A79CE;--signal:rgba(250,222,235,.85)}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--fb);background:var(--canvas);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px;color:var(--fg);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--signal)}
+h1,h2,h3{font-family:var(--fh);color:var(--fg-strong);margin:0}
+button{font-family:inherit;cursor:pointer}
+/* ---------- preview chrome ---------- */
+.pv{display:flex;align-items:center;gap:12px;padding:10px 20px;border-bottom:1px solid var(--border);background:var(--chrome);color:var(--chrome-fg);position:sticky;top:0;z-index:40;flex-wrap:wrap}
+.pv__brand{display:flex;align-items:center;gap:9px;font-family:var(--fh);font-weight:600;font-size:14px}
+.pv__dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(58,123,213,.22)}
+.pv__label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(249,246,240,.55)}
+.pv__spacer{flex:1}
+.seg{display:flex;gap:0;border:1px solid rgba(249,246,240,.24)}
+.seg button{background:none;border:0;color:rgba(249,246,240,.6);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;display:flex;align-items:center;gap:6px}
+.seg button+button{border-left:1px solid rgba(249,246,240,.18)}
+.seg button:hover{color:#fff;background:rgba(249,246,240,.08)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.seg svg{width:13px;height:13px}
+.pv__back{font-size:11px;color:rgba(249,246,240,.6)}
+.pv__back:hover{color:#fff}
+/* ---------- viewport frame ---------- */
+.stage{padding:0}
+html[data-view="mobile"] .stage{padding:28px 16px 40px;display:flex;justify-content:center}
+.app{background:var(--canvas);display:grid;grid-template-columns:224px 1fr;min-height:calc(100vh - 47px)}
+html[data-view="mobile"] .app{grid-template-columns:1fr;width:390px;min-height:760px;height:760px;border:1px solid var(--border-strong);border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.28);position:relative}
+/* ---------- sidebar ---------- */
+.side{border-right:1px solid var(--border);padding:18px 0;background:var(--surface-2)}
+.side__group{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-muted);padding:0 18px 10px}
+.navitem{display:flex;align-items:center;gap:10px;width:100%;padding:9px 18px;background:none;border:0;border-left:2px solid transparent;color:var(--fg);font-size:12.5px;text-align:left}
+.navitem svg{width:16px;height:16px;flex:0 0 16px}
+.navitem:hover{background:var(--hover)}
+.navitem[aria-current="true"]{background:var(--hover);border-left-color:var(--accent);color:var(--fg-strong);font-weight:600}
+.side__foot{margin-top:18px;padding:14px 18px 0;border-top:1px solid var(--border)}
+.side__foot a{font-size:11px;display:flex;align-items:center;gap:7px;color:var(--fg-muted)}
+.side__foot a:hover{color:var(--accent)}
+.side__foot svg{width:13px;height:13px}
+/* mobile drawer */
+.mbar{display:none}
+html[data-view="mobile"] .mbar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border);background:var(--surface-2);position:sticky;top:0;z-index:20}
+html[data-view="mobile"] .mbar__title{font-family:var(--fh);font-weight:600;font-size:14px;color:var(--fg-strong)}
+.iconbtn{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--border);background:none;color:var(--fg)}
+.iconbtn:hover{background:var(--hover)}
+.iconbtn svg{width:15px;height:15px}
+html[data-view="mobile"] .side{position:absolute;inset:0 auto 0 0;width:250px;z-index:30;transform:translateX(-102%);transition:transform .22s ease;box-shadow:12px 0 40px rgba(0,0,0,.3);padding-top:14px}
+html[data-view="mobile"] .app.drawer-open .side{transform:none}
+.scrim{display:none}
+html[data-view="mobile"] .app.drawer-open .scrim{display:block;position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:25}
+/* ---------- main ---------- */
+.main{min-width:0;overflow:auto}
+html[data-view="mobile"] .main{max-height:100%}
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 26px;border-bottom:1px solid var(--border);background:var(--surface-2)}
+html[data-view="mobile"] .topbar{display:none}
+.client{display:flex;align-items:center;gap:9px;border:1px solid var(--border);padding:5px 10px;background:none;color:var(--fg)}
+.client:hover{background:var(--hover)}
+.avatar{width:24px;height:24px;display:grid;place-items:center;font-size:10px;font-weight:700;color:#fff;background:var(--blue)}
+.client__n{font-size:12px;font-weight:600;line-height:1.2}
+.client__d{font-size:10px;color:var(--fg-muted)}
+.search{flex:1;max-width:320px;padding:7px 10px;border:1px solid var(--border);background:var(--surface);color:var(--fg);font-family:inherit;font-size:12px}
+.search::placeholder{color:var(--fg-muted)}
+.sync{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:11px;color:var(--fg-muted);letter-spacing:.04em}
+.sync .d{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(31,138,91,.2)}
+.page{padding:26px}
+html[data-view="mobile"] .page{padding:18px 14px 40px}
+.eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;font-weight:600}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.head h1{font-size:26px;line-height:1.1;font-weight:600}
+html[data-view="mobile"] .head h1{font-size:21px}
+.btn{border:1px solid var(--border-strong);background:none;color:var(--fg);font-size:12px;padding:8px 14px;letter-spacing:.03em}
+.btn:hover{background:var(--hover)}
+.btn--primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn--primary:hover{filter:brightness(1.08);background:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:26px}
+html[data-view="mobile"] .stats{grid-template-columns:repeat(2,1fr)}
+.stat{background:var(--surface-2);padding:16px}
+.stat .n{font-family:var(--fh);font-weight:600;font-size:24px;color:var(--fg-strong)}
+.stat .l{font-size:10.5px;color:var(--fg-muted);margin-top:3px;line-height:1.4}
+.panelhead{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin:0 0 12px;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+html[data-view="mobile"] .cards{grid-template-columns:1fr}
+.card{background:var(--surface);border:1px solid var(--border);padding:17px}
+.card:hover{background:var(--hover)}
+.card .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:8px;font-weight:600}
+.card .t{font-family:var(--fh);font-weight:600;font-size:14.5px;color:var(--fg-strong);margin-bottom:5px}
+.card .d{font-size:11.5px;color:var(--fg-muted);line-height:1.55}
+.note{margin-top:28px;padding:14px 16px;border:1px solid var(--border);background:var(--surface);font-size:11.5px;color:var(--fg-muted);line-height:1.6}
+.note b{color:var(--fg-strong)}
+/* rows / lists */
+.filters{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.filters input,.filters select{padding:7px 10px;border:1px solid var(--border);background:var(--surface);color:var(--fg);font-family:inherit;font-size:12px}
+.rows{border:1px solid var(--border);background:var(--surface)}
+.row{display:grid;grid-template-columns:1fr 150px 110px 90px;gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--hover)}
+.row__h{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-muted);background:var(--surface-2);font-weight:600}
+html[data-view="mobile"] .row{grid-template-columns:1fr auto}
+html[data-view="mobile"] .row__h,html[data-view="mobile"] .row .hide-m{display:none}
+.row .t{font-size:13px;font-weight:600;color:var(--fg-strong);font-family:var(--fh)}
+.row .s{font-size:11px;color:var(--fg-muted);margin-top:3px}
+.chip{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;font-weight:600;white-space:nowrap}
+.chip--live{color:var(--green)}
+.chip--draft{color:var(--amber)}
+.chip--review{color:var(--signal)}
+.meta{font-size:11px;color:var(--fg-muted)}
+/* ---------- page editor ---------- */
+.ed{display:grid;grid-template-columns:200px 1fr 240px;gap:1px;background:var(--border);border:1px solid var(--border);min-height:520px}
+html[data-view="mobile"] .ed{grid-template-columns:1fr;min-height:0}
+.ed__col{background:var(--surface-2);padding:14px;min-width:0}
+.ed__t{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:11px;font-weight:600}
+.blocklist{display:flex;flex-direction:column;gap:7px}
+.blockchip{display:flex;align-items:center;gap:8px;border:1px dashed var(--border-strong);padding:9px 10px;font-size:11.5px;background:none;color:var(--fg);text-align:left;width:100%}
+.blockchip:hover{border-style:solid;background:var(--hover);color:var(--accent)}
+.canvas{background:var(--canvas);padding:16px;display:flex;flex-direction:column;gap:10px}
+.blk{border:1px solid var(--border);background:var(--surface);padding:14px 15px;position:relative}
+.blk[data-sel="true"]{border-color:var(--accent);box-shadow:0 0 0 2px rgba(58,123,213,.18)}
+.blk__k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.blk__grab{color:var(--fg-muted);letter-spacing:0}
+.blk__h{font-family:var(--fh);font-weight:600;font-size:16px;color:var(--fg-strong);line-height:1.2}
+.blk__p{font-size:11.5px;color:var(--fg-muted);margin-top:5px;line-height:1.55}
+.blk__cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.blk__cols div{border:1px solid var(--border);padding:9px;font-size:10.5px;color:var(--fg-muted)}
+.field{margin-bottom:13px}
+.field label{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:5px;font-weight:600}
+.field input,.field select,.field textarea{width:100%;padding:7px 9px;border:1px solid var(--border);background:var(--surface);color:var(--fg);font-family:inherit;font-size:12px}
+.swatches{display:flex;gap:7px}
+.sw{width:30px;height:30px;border:1px solid var(--border-strong)}
+.sw[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:2px}
+.tabstrip{display:flex;gap:0;border:1px solid var(--border);margin-bottom:14px;overflow:auto}
+.tabstrip button{flex:1;background:none;border:0;padding:9px 12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-muted);white-space:nowrap}
+.tabstrip button+button{border-left:1px solid var(--border)}
+.tabstrip button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:600}
+.tokengrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+html[data-view="mobile"] .tokengrid{grid-template-columns:1fr}
+.panel{border:1px solid var(--border);background:var(--surface);padding:18px}
+.panel h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.panel .sub{font-size:11px;color:var(--fg-muted);margin-bottom:15px;line-height:1.5}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#2D2D2D">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#2D2D2D"/><circle cx="600" cy="330" r="34" fill="#3A7BD5"/><text x="600" y="470" text-anchor="middle" fill="#F9F6F0" font-family="monospace" font-size="64" font-weight="700" letter-spacing="6">CMS</text><text x="600" y="540" text-anchor="middle" fill="#9a9a9a" font-family="monospace" font-size="22" letter-spacing="8">PREVIEW</text></svg>
+</template>
+<div class="pv">
+<div class="pv__brand"><span class="pv__dot"></span>Digital Allies · CMS</div>
+<span class="pv__label">Preview</span>
+<div class="pv__spacer"></div>
+<div class="seg" role="group" aria-label="Theme">
+<button id="tLight" aria-pressed="true" onclick="setTheme('light')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path></svg>Light</button>
+<button id="tDark" aria-pressed="false" onclick="setTheme('dark')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"></path></svg>Dark</button>
+</div>
+<div class="seg" role="group" aria-label="Viewport">
+<button id="vDesk" aria-pressed="true" onclick="setView('desktop')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="13" rx="1"></rect><path d="M8 21h8m-4-5v5"></path></svg>Desktop</button>
+<button id="vMob" aria-pressed="false" onclick="setView('mobile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M11 19h2"></path></svg>Mobile</button>
+</div>
+<a class="pv__back" href="index.html">← CMS Hub</a>
+</div>
+<div class="stage">
+<div class="app" id="app">
+<div class="scrim" onclick="toggleDrawer(false)"></div>
+<nav class="side" id="side">
+<div class="side__group">Modules</div>
+<button class="navitem" aria-current="true" data-tab="dashboard" onclick="setTab('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg><span>Dashboard</span></button>
+<button class="navitem" data-tab="pages" onclick="setTab('pages')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span>Pages</span></button>
+<button class="navitem" data-tab="editor" onclick="setTab('editor')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg><span>Page Editor</span></button>
+<button class="navitem" data-tab="press" onclick="setTab('press')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span>The Press Office</span></button>
+<button class="navitem" data-tab="projects" onclick="setTab('projects')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg><span>Projects</span></button>
+<button class="navitem" data-tab="research" onclick="setTab('research')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg><span>Research</span></button>
+<button class="navitem" data-tab="learn" onclick="setTab('learn')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-4 10 4-10 4z"></path><path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"></path></svg><span>Learn</span></button>
+<button class="navitem" data-tab="workshop" onclick="setTab('workshop')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-5"></path><path d="M9 8V2"></path><path d="M15 8V2"></path><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"></path></svg><span>The Workshop</span></button>
+<button class="navitem" data-tab="settings" onclick="setTab('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path></svg><span>Settings</span></button>
+<div class="side__foot"><a href="https://cms.digitalallies.net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>View live site</a></div>
+</nav>
+<div class="main">
+<div class="mbar">
+<button class="iconbtn" aria-label="Menu" onclick="toggleDrawer(true)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+<span class="mbar__title" id="mTitle">Dashboard</span>
+<div class="pv__spacer"></div>
+<span class="sync"><span class="d"></span>Live</span>
+</div>
+<div class="topbar">
+<button class="client"><span class="avatar">DA</span><span><span class="client__n">Digital Allies</span><br><span class="client__d">digitalallies.net</span></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+<input class="search" placeholder="Search pages, posts, projects…">
+<span class="sync"><span class="d"></span>Connected · Supabase</span>
+</div>
+
+<section class="page" data-panel="dashboard">
+<div class="eyebrow">Overview</div>
+<div class="head"><h1>Dashboard</h1><button class="btn btn--primary" onclick="setTab('editor')">Open page editor</button></div>
+<div class="stats">
+<div class="stat"><div class="n">12</div><div class="l">Published pages</div></div>
+<div class="stat"><div class="n">4</div><div class="l">Draft pages</div></div>
+<div class="stat"><div class="n">3</div><div class="l">Connected tenants</div></div>
+<div class="stat"><div class="n">28</div><div class="l">Posts this quarter</div></div>
+</div>
+<div class="panelhead">Recent activity</div>
+<div class="cards">
+<div class="card"><div class="k">● Live</div><div class="t">Services Grid updated</div><div class="d">Home page — edited section copy and reordered 3 blocks.</div></div>
+<div class="card"><div class="k">Draft</div><div class="t">Bilingual Website case study</div><div class="d">Press Office — awaiting review before publish.</div></div>
+<div class="card"><div class="k">● Live</div><div class="t">Atomic Finds — product grid</div><div class="d">Tenant: Atomic Finds — commerce fields synced from Supabase.</div></div>
+</div>
+<div class="note"><b>One preview, four states.</b> Theme and viewport are toggles at the top — light, dark, desktop, and mobile all come from the same markup and token set, so the handoff has a single source of truth.</div>
+</section>
+
+<section class="page" data-panel="pages" hidden>
+<div class="eyebrow">Site management</div>
+<div class="head"><h1>Pages</h1><button class="btn btn--primary" onclick="setTab('editor')">+ New page</button></div>
+<div class="filters"><input placeholder="Search pages…"><select><option>All status</option><option>Published</option><option>Draft</option></select></div>
+<div class="rows">
+<div class="row row__h"><span>Page</span><span class="hide-m">Slug</span><span class="hide-m">Updated</span><span>Status</span></div>
+<div class="row"><div><div class="t">Home</div><div class="s">Hero · Services · Field Notes · CTA</div></div><span class="meta hide-m">/</span><span class="meta hide-m">2 hours ago</span><span class="chip chip--live">Live</span></div>
+<div class="row"><div><div class="t">Services</div><div class="s">Departments grid · Pricing · FAQ</div></div><span class="meta hide-m">/services</span><span class="meta hide-m">Yesterday</span><span class="chip chip--live">Live</span></div>
+<div class="row"><div><div class="t">About</div><div class="s">Story · Team · Values</div></div><span class="meta hide-m">/about</span><span class="meta hide-m">3 days ago</span><span class="chip chip--live">Live</span></div>
+<div class="row"><div><div class="t">Bilingual Websites</div><div class="s">Case study landing — awaiting copy review</div></div><span class="meta hide-m">/work/bilingual</span><span class="meta hide-m">6 hours ago</span><span class="chip chip--draft">Draft</span></div>
+<div class="row"><div><div class="t">Contact</div><div class="s">Form · Map · Hours</div></div><span class="meta hide-m">/contact</span><span class="meta hide-m">Last week</span><span class="chip chip--live">Live</span></div>
+</div>
+</section>
+
+<section class="page" data-panel="editor" hidden>
+<div class="eyebrow">Pages · Home</div>
+<div class="head"><h1>Page Editor</h1><div style="display:flex;gap:8px"><button class="btn">Preview</button><button class="btn btn--primary">Publish</button></div></div>
+<div class="ed">
+<div class="ed__col">
+<div class="ed__t">Blocks</div>
+<div class="blocklist">
+<button class="blockchip">＋ Hero</button>
+<button class="blockchip">＋ Departments grid</button>
+<button class="blockchip">＋ Field notes</button>
+<button class="blockchip">＋ Rich text</button>
+<button class="blockchip">＋ Testimonials</button>
+<button class="blockchip">＋ Pricing table</button>
+<button class="blockchip">＋ CTA band</button>
+</div>
+</div>
+<div class="ed__col canvas">
+<div class="blk" data-sel="true"><div class="blk__k"><span>Hero</span><span class="blk__grab">⠿</span></div><div class="blk__h">Small business web that actually works.</div><div class="blk__p">Kingman-built websites, bilingual by default, wired to a CMS you can run yourself.</div></div>
+<div class="blk"><div class="blk__k"><span>Departments grid</span><span class="blk__grab">⠿</span></div><div class="blk__h">What we do</div><div class="blk__cols"><div>Web Studio</div><div>Press Office</div><div>The Workshop</div></div></div>
+<div class="blk"><div class="blk__k"><span>Field notes</span><span class="blk__grab">⠿</span></div><div class="blk__h">Latest from the field</div><div class="blk__p">Pulls the three most recent Press Office posts automatically.</div></div>
+<div class="blk"><div class="blk__k"><span>CTA band</span><span class="blk__grab">⠿</span></div><div class="blk__h">Start a project</div><div class="blk__p">Button → /contact</div></div>
+</div>
+<div class="ed__col">
+<div class="ed__t">Hero · settings</div>
+<div class="field"><label>Headline</label><input value="Small business web that actually works."></div>
+<div class="field"><label>Sub-headline</label><textarea rows="3">Kingman-built websites, bilingual by default.</textarea></div>
+<div class="field"><label>Layout</label><select><option>Left aligned</option><option>Centered</option><option>Split with image</option></select></div>
+<div class="field"><label>Accent</label><div class="swatches"><button class="sw" aria-pressed="true" style="background:#3A7BD5"></button><button class="sw" style="background:#A8446C"></button><button class="sw" style="background:#1F8A5B"></button><button class="sw" style="background:#2D2D2D"></button></div></div>
+<div class="field"><label>Visibility</label><select><option>Published</option><option>Draft</option></select></div>
+</div>
+</div>
+<div class="note"><b>Blocks are the contract.</b> Every block is a design-system component with named props — the editor never writes free-form HTML, so brand tokens stay authoritative across all tenant sites.</div>
+</section>
+
+<section class="page" data-panel="press" hidden>
+<div class="eyebrow">Content</div>
+<div class="head"><h1>The Press Office</h1><button class="btn btn--primary">+ New post</button></div>
+<div class="rows">
+<div class="row row__h"><span>Post</span><span class="hide-m">Category</span><span class="hide-m">Date</span><span>Status</span></div>
+<div class="row"><div><div class="t">Kingman's small-business web gap</div><div class="s">Data story — 42 businesses surveyed</div></div><span class="meta hide-m">Field notes</span><span class="meta hide-m">Jul 24</span><span class="chip chip--live">Live</span></div>
+<div class="row"><div><div class="t">Bilingual by default</div><div class="s">Why every DA build ships two languages</div></div><span class="meta hide-m">Essay</span><span class="meta hide-m">Jul 18</span><span class="chip chip--live">Live</span></div>
+<div class="row"><div><div class="t">Atomic Finds launch</div><div class="s">Case study — commerce on the CMS</div></div><span class="meta hide-m">Case study</span><span class="meta hide-m">Aug 2</span><span class="chip chip--review">In review</span></div>
+</div>
+</section>
+
+<section class="page" data-panel="projects" hidden>
+<div class="eyebrow">Delivery</div>
+<div class="head"><h1>Projects</h1><button class="btn btn--primary">+ New project</button></div>
+<div class="cards">
+<div class="card"><div class="k">In build</div><div class="t">Atomic Finds — commerce</div><div class="d">Product grid + Stripe checkout. 6 of 9 tasks done.</div></div>
+<div class="card"><div class="k">Discovery</div><div class="t">Healthcare Training System</div><div class="d">Course catalog and enrollment flow scoped.</div></div>
+<div class="card"><div class="k">Shipped</div><div class="t">DA site rebuild</div><div class="d">Connected CMS live on Vercel + Supabase.</div></div>
+</div>
+</section>
+
+<section class="page" data-panel="research" hidden>
+<div class="eyebrow">Intelligence</div>
+<div class="head"><h1>Research</h1><button class="btn">Export CSV</button></div>
+<div class="rows">
+<div class="row row__h"><span>Study</span><span class="hide-m">Scope</span><span class="hide-m">Updated</span><span>Status</span></div>
+<div class="row"><div><div class="t">Mohave County web presence audit</div><div class="s">B2B businesses with weak or no site</div></div><span class="meta hide-m">142 records</span><span class="meta hide-m">Jul 26</span><span class="chip chip--live">Active</span></div>
+<div class="row"><div><div class="t">Bilingual search demand</div><div class="s">Spanish-language query volume, AZ</div></div><span class="meta hide-m">Keyword set</span><span class="meta hide-m">Jul 11</span><span class="chip chip--draft">Draft</span></div>
+</div>
+</section>
+
+<section class="page" data-panel="learn" hidden>
+<div class="eyebrow">Enablement</div>
+<div class="head"><h1>Learn</h1><button class="btn">Browse all guides</button></div>
+<div class="cards">
+<div class="card"><div class="k">Guide</div><div class="t">Editing a page</div><div class="d">Add, reorder, and publish blocks without breaking the brand.</div></div>
+<div class="card"><div class="k">Guide</div><div class="t">Writing for the Press Office</div><div class="d">Voice rules, structure, and the publish checklist.</div></div>
+<div class="card"><div class="k">Guide</div><div class="t">Global brand settings</div><div class="d">How token changes ripple across every page and tenant.</div></div>
+</div>
+</section>
+
+<section class="page" data-panel="workshop" hidden>
+<div class="eyebrow">Build</div>
+<div class="head"><h1>The Workshop</h1><button class="btn btn--primary">New task</button></div>
+<div class="rows">
+<div class="row row__h"><span>Task</span><span class="hide-m">Owner</span><span class="hide-m">Due</span><span>Status</span></div>
+<div class="row"><div><div class="t">Wire Settings → token API</div><div class="s">Global brand edits persist per tenant</div></div><span class="meta hide-m">Dev</span><span class="meta hide-m">Aug 4</span><span class="chip chip--draft">Open</span></div>
+<div class="row"><div><div class="t">Block registry v2</div><div class="s">Add pricing table + testimonials</div></div><span class="meta hide-m">Dev</span><span class="meta hide-m">Aug 8</span><span class="chip chip--review">In progress</span></div>
+</div>
+</section>
+
+<section class="page" data-panel="settings" hidden>
+<div class="eyebrow">Global</div>
+<div class="head"><h1>Settings</h1><button class="btn btn--primary">Save changes</button></div>
+<div class="tokengrid">
+<div class="panel">
+<h3>Brand colors</h3>
+<div class="sub">Edit once — every page and block on this tenant re-renders from these tokens.</div>
+<div class="field"><label>Primary</label><div class="swatches"><button class="sw" aria-pressed="true" style="background:#3A7BD5"></button><button class="sw" style="background:#1F8A5B"></button><button class="sw" style="background:#C5301A"></button><button class="sw" style="background:#5B4BC4"></button></div></div>
+<div class="field"><label>Signal / accent</label><div class="swatches"><button class="sw" aria-pressed="true" style="background:#A8446C"></button><button class="sw" style="background:#B8791F"></button><button class="sw" style="background:#2D8B8B"></button></div></div>
+<div class="field"><label>Canvas</label><select><option>Bone (#F9F6F0)</option><option>White (#FFFFFF)</option><option>Charcoal (#2D2D2D)</option></select></div>
+</div>
+<div class="panel">
+<h3>Typography</h3>
+<div class="sub">Two families max. Headers set the voice; details carry the technical tone.</div>
+<div class="field"><label>Headers</label><select><option>Lexend Deca</option><option>Space Grotesk</option><option>Instrument Sans</option></select></div>
+<div class="field"><label>Body / details</label><select><option>JetBrains Mono</option><option>IBM Plex Mono</option><option>Söhne</option></select></div>
+<div class="field"><label>Base size</label><select><option>15px</option><option>16px</option><option>17px</option></select></div>
+</div>
+<div class="panel">
+<h3>Site identity</h3>
+<div class="sub">Domain, logo, and the metadata every page inherits.</div>
+<div class="field"><label>Site name</label><input value="Digital Allies"></div>
+<div class="field"><label>Primary domain</label><input value="digitalallies.net"></div>
+<div class="field"><label>Default meta description</label><textarea rows="3">Kingman-built websites and CMS for small businesses across Mohave County.</textarea></div>
+</div>
+<div class="panel">
+<h3>Appearance</h3>
+<div class="sub">Default theme served to visitors and admins. The toggle at the top of this preview mirrors it.</div>
+<div class="field"><label>Admin theme</label><select id="themeSelect" onchange="setTheme(this.value)"><option value="light">Light</option><option value="dark">Dark</option></select></div>
+<div class="field"><label>Grid overlay</label><select><option>On (ruled)</option><option>Off</option></select></div>
+<div class="field"><label>Density</label><select><option>Comfortable</option><option>Compact</option></select></div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<script>
+const LABELS={dashboard:'Dashboard',pages:'Pages',editor:'Page Editor',press:'The Press Office',projects:'Projects',research:'Research',learn:'Learn',workshop:'The Workshop',settings:'Settings'};
+function setTab(id){document.querySelectorAll('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==id);document.querySelectorAll('.navitem').forEach(b=>b.setAttribute('aria-current',String(b.dataset.tab===id)));document.getElementById('mTitle').textContent=LABELS[id]||id;document.querySelector('.main').scrollTop=0;toggleDrawer(false);try{localStorage.setItem('daCmsTab',id)}catch(e){}}
+function setTheme(t){document.documentElement.dataset.theme=t;document.getElementById('tLight').setAttribute('aria-pressed',String(t==='light'));document.getElementById('tDark').setAttribute('aria-pressed',String(t==='dark'));document.getElementById('themeSelect').value=t;try{localStorage.setItem('daCmsTheme',t)}catch(e){}}
+function setView(v){document.documentElement.dataset.view=v;document.getElementById('vDesk').setAttribute('aria-pressed',String(v==='desktop'));document.getElementById('vMob').setAttribute('aria-pressed',String(v==='mobile'));if(v==='desktop')toggleDrawer(false);try{localStorage.setItem('daCmsView',v)}catch(e){}}
+function toggleDrawer(open){document.getElementById('app').classList.toggle('drawer-open',open)}
+try{const t=localStorage.getItem('daCmsTheme');if(t)setTheme(t);const v=localStorage.getItem('daCmsView');if(v)setView(v);const tab=localStorage.getItem('daCmsTab');if(tab&&LABELS[tab])setTab(tab);}catch(e){}
+</script>
+</body>
+</html>
