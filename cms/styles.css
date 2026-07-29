@@ -3,7 +3,7 @@
    Dark: charcoal canvas, bone text
    Shared across all site DSs */
 
-@import url('../colors_and_type.css');
+@import url('./colors_and_type.css');
 
 :root {
   /* Light mode (default) */
