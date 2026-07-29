@@ -2,6 +2,8 @@
 
 This guide explains how to connect your public website (digitalallies.net) to the CMS backend (Supabase) and admin dashboard.
 
+> **Admin UI:** the canonical dashboard is `dashboard.html`. Beyond Tools / Services / Calendar, the CMS also edits **pages** (a section-based page builder), **articles** (the blog), and **design tokens** (global brand). See the collections below and the full scope in `../CMS_IMPLEMENTATION_PLAN.html`.
+
 ## Architecture Overview
 
 ```
@@ -31,6 +33,18 @@ This guide explains how to connect your public website (digitalallies.net) to th
 │   - User permissions                    │
 └─────────────────────────────────────────┘
 ```
+
+## Collections You'll Need
+
+| Collection | Purpose | Key fields |
+|---|---|---|
+| `tools` | Service offerings | name, slug, description, features, pricing, status |
+| `services` | Service categories | name, slug, description, featuredTools[] |
+| `pages` | Website pages, built from blocks | title, slug, meta, **blocks[]** (type + data per section), status |
+| `articles` | Blog posts / press / case studies | title, slug, type, excerpt, body, tags[], heroImage, status, scheduledDate |
+| `content_calendar` | 30-day marketing run | day, week, category, topic, hook, caption, cta, status, scheduledDate |
+| `design_tokens` | Global brand the site reads | colors{}, fonts{}, typeScale{}, spacing{}, logo, favicon |
+| `users` | Editors & admins | email, role, permissions |
 
 ## Environment Setup
 

@@ -1,0 +1,51 @@
+/* CMS Design System — Base Tokens
+   Light: bone-white canvas, charcoal text
+   Dark: charcoal canvas, bone text
+   Shared across all site DSs */
+
+@import url('../colors_and_type.css');
+
+:root {
+  /* Light mode (default) */
+  --cms-bg: var(--bone-white);
+  --cms-bg-alt: var(--pinned-note);
+  --cms-fg: var(--charcoal);
+  --cms-fg-muted: var(--text-muted);
+  --cms-fg-on-dark: var(--bone-white);
+  --cms-border: var(--charcoal);
+  --cms-border-soft: var(--hairline);
+  --cms-accent: var(--pulse-blue);
+  --cms-signal: var(--signal-red);
+  --cms-grid: rgba(45, 45, 45, 0.07);
+  
+  /* Dark mode overrides */
+  --cms-dark-canvas: #2D2D2D;
+  --cms-dark-bg: #1E1D1B;
+  --cms-dark-fg: var(--bone-white);
+  --cms-dark-fg-muted: #B7B2A8;
+  --cms-dark-border: rgba(249, 246, 240, 0.16);
+  --cms-dark-grid: rgba(249, 246, 240, 0.06);
+}
+
+/* Dark mode — apply to root or specific container */
+[data-theme="dark"] {
+  --cms-bg: var(--cms-dark-canvas);
+  --cms-bg-alt: var(--cms-dark-bg);
+  --cms-fg: var(--cms-dark-fg);
+  --cms-fg-muted: var(--cms-dark-fg-muted);
+  --cms-border: var(--cms-dark-border);
+  --cms-grid: var(--cms-dark-grid);
+}
+
+/* Shared component base styles */
+.cms-nav { background: var(--cms-bg-alt); border-right: 1px solid var(--cms-border); }
+.cms-nav__group { font-size: var(--fs-nano); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--cms-fg-muted); padding: var(--space-3) var(--space-5) var(--space-2); font-weight: 600; }
+.cms-navitem { display: flex; align-items: center; gap: 12px; padding: 10px var(--space-5); color: var(--cms-fg); cursor: pointer; border-left: 2px solid transparent; transition: background var(--dur-quick); }
+.cms-navitem:hover { background: var(--accent-soft); }
+.cms-navitem.active { border-left-color: var(--cms-signal); font-weight: 600; background: var(--cms-bg); }
+.cms-navitem svg { width: 16px; height: 16px; flex-shrink: 0; }
+.cms-card { background: var(--cms-bg); border: 1px solid var(--cms-border); padding: var(--space-5); transition: transform var(--dur-quick), box-shadow var(--dur-quick); }
+.cms-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.cms-stat { text-align: left; padding: var(--space-5); }
+.cms-stat__number { font-family: var(--font-headers); font-weight: 700; font-size: 34px; color: var(--cms-fg); margin: 0; }
+.cms-stat__label { font-size: var(--fs-small); color: var(--cms-fg-muted); margin-top: 4px; }

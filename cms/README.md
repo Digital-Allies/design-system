@@ -1,54 +1,54 @@
-# Barcelona CMS — Complete Foundation Package
+# Digital Allies CMS — Documentation
 
-Everything you need to understand, build, and wire up the CMS platform.
+**The CMS is one thing: the Connected CMS Dashboard at `dashboard.html`**
+(served by `app.js` + `style.css`). Send developers and collaborators here.
+Earlier prototypes live in `_archive/` for reference only.
 
-## 📋 Documentation Files
+## What the CMS must include
 
-### For Understanding the Architecture
-- **INTEGRATION_OVERVIEW.md** — High-level overview of all three systems (website, admin, database)
-- **CMS_IMPLEMENTATION_PLAN.html** — 5-week technical roadmap (technologies, databases, API)
+Three core jobs (full detail in the spec):
 
-### For Wiring Everything Together
-- **WIRING_GUIDE.md** — Step-by-step instructions for connecting website → admin → Supabase
+1. **Website page editing** — build pages by stacking sections from a
+   component library (hero, departments, field notes, rich text, CTA, …);
+   reorder, edit inline, draft/publish.
+2. **Global design-system editing** — edit the brand tokens the whole site
+   reads (colors, type, spacing) from one place; change once, update every page.
+3. **Blog & article publishing** — The Press Office: write, schedule, and
+   publish posts, press releases, and case studies.
 
-### For Reviewing the Admin Dashboard
-- **CMS_DASHBOARD_UI.html** — Interactive mockup of the admin dashboard (click to explore)
+Plus the content calendar, projects, research, the dev workshop, and settings.
 
-## 🚀 Quick Start
+## Anthony's task tracker
 
-**Phase 1 (Current): Foundation**
-1. Read `INTEGRATION_OVERVIEW.md` — Understand the three-system architecture
-2. Open `CMS_IMPLEMENTATION_PLAN.html` in browser — Review the 5-week plan
-3. Open `CMS_DASHBOARD_UI.html` in browser — Interact with dashboard mockup
-4. Read `WIRING_GUIDE.md` — Save for Phase 2
+**`anthony-tasks.html`** — visual check-off list of every open task that
+needs Anthony specifically (Supabase/Vercel/registrar clicks, calls needing
+his judgment), grouped by urgency, synced from `da-platform/STATUS.md` +
+`BUILD-SCHEDULE.md`. Checkbox state persists locally per device. Tell Claude
+what changed in a session and the list gets updated to match.
 
-**Phase 2 (Next): Integration**
-1. Follow `WIRING_GUIDE.md` to connect the three systems
-2. Test end-to-end (edit in admin → see on website)
+## Documentation files
 
-**Phase 3 (Later): Client Onboarding**
-1. Healthcare Training Center migration
-2. Atomic Finds greenfield build
+- **`../CMS_IMPLEMENTATION_PLAN.html`** — the specification: what the CMS must
+  include + the phased build plan, schema, and API endpoints. **Start here.**
+- **`INTEGRATION_OVERVIEW.md`** — the big picture: public site, admin dashboard, database.
+- **`WIRING_GUIDE.md`** — how to connect website → dashboard → Supabase.
 
-## 📁 What's Here
+## Build status
+
+`dashboard.html` + `app.js` are a working front-end prototype with in-memory
+sample data — the shell, navigation, and basic create/edit/delete are real and
+clickable. The page builder, the section library, the full design-token editor,
+and live publishing are specified in the plan and get built against a backend.
+
+## What's here
 
 ```
 cms/
-├── README.md                          # This file
-├── INTEGRATION_OVERVIEW.md            # Architecture & three systems explained
-├── WIRING_GUIDE.md                    # How to connect everything
-├── CMS_IMPLEMENTATION_PLAN.html       # 5-week technical roadmap
-└── CMS_DASHBOARD_UI.html              # Interactive admin dashboard mockup
+├── dashboard.html              # THE CMS — canonical admin dashboard
+├── app.js, style.css           # dashboard logic + styles
+├── README.md                   # this file
+├── INTEGRATION_OVERVIEW.md     # architecture
+├── WIRING_GUIDE.md             # how to connect everything
+├── index.html                  # CMS landing (links here)
+└── _archive/                   # superseded prototypes (reference only)
 ```
-
-## ✅ Status
-
-- ✅ Design system consolidated
-- ✅ CMS architecture documented
-- ✅ Admin dashboard mockup created
-- ✅ Wiring instructions ready
-- ⏳ Integration (awaiting your signal)
-
----
-
-**Questions?** Start with `INTEGRATION_OVERVIEW.md` — it explains the big picture.

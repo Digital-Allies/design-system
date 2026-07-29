@@ -2,15 +2,20 @@
 
 This document ties everything together: design system, CMS, website, and admin dashboard.
 
+> **The CMS is one interface:** the Connected CMS Dashboard at `dashboard.html`. It must do three jobs — website page editing (a section-based page builder), global design-system editing (brand tokens), and blog/article publishing. Full scope: `../CMS_IMPLEMENTATION_PLAN.html`.
+
 ## Repository Structure
 
 ```
 Digital-Allies/DigitalAllies (PUBLIC WEBSITE)
 ├── cms/
-│   ├── CMS_IMPLEMENTATION_PLAN.html    # 5-week roadmap
-│   ├── CMS_DASHBOARD_UI.html           # Interactive mockup
+│   ├── dashboard.html                  # THE CMS — canonical admin dashboard
+│   ├── app.js, style.css               # dashboard logic + styles
 │   ├── README.md                       # CMS overview
-│   └── WIRING_GUIDE.md                 # How to connect everything
+│   ├── INTEGRATION_OVERVIEW.md         # this file
+│   ├── WIRING_GUIDE.md                 # how to connect everything
+│   └── _archive/                       # superseded prototypes (reference only)
+├── CMS_IMPLEMENTATION_PLAN.html        # CMS spec + build plan (scope)
 ├── design-system/
 │   ├── styles/
 │   ├── fonts/
@@ -46,9 +51,9 @@ Digital-Allies/DigitalAllies (PUBLIC WEBSITE)
 ## Phase 1: Foundation (You are here)
 
 ✅ Design system consolidated (done)
-✅ CMS implementation guide (done)
-✅ CMS dashboard UI mockup (done)
-⏳ Wiring instructions (ready)
+✅ CMS specification written — scope + build plan (done)
+✅ Canonical CMS dashboard prototype — `dashboard.html` (done)
+⏳ Backend wiring — page builder, token editor, publishing (next)
 
 ## Phase 2: Integration (Next)
 
