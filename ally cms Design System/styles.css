@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/spacing.css";
+@import "tokens/effects.css";
+
+:root {
+  --cms-login-bg: linear-gradient(135deg, #f5f0ea 0%, #fff5f2 100%);
+  --cms-login-card-bg: #fff;
+  --cms-login-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --cms-grid-base: 8px;
+  --cms-grid-xs: calc(var(--cms-grid-base) * 0.5);
+  --cms-grid-sm: var(--cms-grid-base);
+  --cms-grid-md: calc(var(--cms-grid-base) * 1.5);
+  --cms-grid-lg: calc(var(--cms-grid-base) * 2);
+  --cms-grid-xl: calc(var(--cms-grid-base) * 3);
+  --cms-grid-2xl: calc(var(--cms-grid-base) * 4);
+  --cms-grid-3xl: calc(var(--cms-grid-base) * 5);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cms-login-bg: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --cms-login-card-bg: #242424;
+    --cms-login-shadow: 0 2px 16px rgba(0,0,0,0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headers);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-pulse-blue-dark);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}

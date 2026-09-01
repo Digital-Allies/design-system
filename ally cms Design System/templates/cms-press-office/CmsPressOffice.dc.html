@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AllyCMS Press Office" description="Article and content management for press releases and news" -->
+<helmet>
+<script src="./ds-base.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;background:var(--cms-bg);font-family:var(--font-body);color:var(--color-fg)">
+<aside style="width:280px;background:var(--cms-sidebar-bg);border-right:var(--border-1);overflow-y:auto;padding:var(--space-6)">
+<div style="margin-bottom:var(--space-8)"><div style="font-size:var(--fs-xs);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-6)">ally CMS</div>
+<nav style="display:flex;flex-direction:column;gap:var(--space-2)"><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Dashboard</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Pages</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Collections</a><a href="#" style="padding:var(--space-3) var(--space-4);background:var(--cms-item-active-bg);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-weight:600;font-size:var(--fs-sm)">Press Office</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Projects</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Research</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Settings</a></nav></div>
+</aside>
+<main style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+<header style="background:var(--cms-header-bg);border-bottom:var(--border-1);padding:var(--space-4) var(--space-6);display:flex;justify-content:space-between;align-items:center">
+<div><h1 style="margin:0;font-size:var(--fs-lg);font-weight:700">The Press Office</h1><p style="margin:var(--space-1) 0 0 0;font-size:var(--fs-xs);color:var(--color-fg-soft)">Manage articles and press releases</p></div>
+<button style="padding:var(--space-2) var(--space-4);background:var(--color-accent);color:white;border:none;border-radius:var(--radius-1);cursor:pointer;font-weight:600;font-size:var(--fs-sm)" onclick="{{ addArticle }}">+ New Article</button>
+</header>
+<div style="flex:1;display:flex;overflow:hidden">
+<section style="flex:1;overflow-y:auto;padding:var(--space-6);background:var(--cms-editor-bg)">
+<div style="max-width:900px">
+<div style="background:var(--cms-block-list-bg);border:var(--border-1);border-radius:var(--radius-2);overflow:hidden;margin-bottom:var(--space-4)">
+<sc-for list="{{ articles }}" as="article" hint-placeholder-count="3">
+<div style="padding:var(--space-4);border-bottom:var(--border-1);cursor:pointer;transition:background 200ms" onmouseover="this.style.background='var(--cms-item-active-bg)'" onmouseout="this.style.background='transparent'">
+<div style="display:flex;justify-content:space-between;align-items:start"><div style="flex:1"><p style="margin:0 0 var(--space-1) 0;font-weight:600;font-size:var(--fs-sm)">{{ article.title }}</p><p style="margin:0 0 var(--space-2) 0;font-size:var(--fs-xs);color:var(--color-fg-soft)">{{ article.date }}</p><p style="margin:0;font-size:var(--fs-xs);color:var(--color-fg-soft);line-height:1.4">{{ article.excerpt }}</p></div><div style="display:flex;gap:var(--space-2)"><span style="padding:4px 8px;background:var(--color-bg-alt);border-radius:var(--radius-1);font-size:var(--fs-xs);font-weight:600">{{ article.status }}</span></div></div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+<aside style="width:320px;background:var(--cms-panel-bg);border-left:var(--border-1);padding:var(--space-6);overflow-y:auto">
+<h3 style="margin:0 0 var(--space-4) 0;font-size:var(--fs-sm);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide)">Article Settings</h3>
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Title</span><input type="text" placeholder="Article title" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label>
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Excerpt</span><textarea placeholder="Brief summary" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);min-height:80px;box-sizing:border-box"></textarea></label>
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Publish Date</span><input type="date" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label>
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Status</span><select style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box"><option>Draft</option><option>Published</option><option>Scheduled</option></select></label>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1400px&quot;,&quot;height&quot;:&quot;900px&quot;}}">
+class Component extends DCLogic {
+  state = {
+    articles: [
+      { id: 'a1', title: 'Launch of New Design System', date: 'Jul 24, 2026', excerpt: 'Introducing the unified ally CMS design system for consistent branding across all products.', status: 'Published' },
+      { id: 'a2', title: 'Q3 Product Roadmap Announced', date: 'Jul 20, 2026', excerpt: 'Our roadmap for the next quarter includes mobile optimization and API improvements.', status: 'Published' },
+      { id: 'a3', title: 'Feature Spotlight: Collections Manager', date: 'Jul 15, 2026', excerpt: 'Organize and manage your products with powerful new collection tools.', status: 'Draft' }
+    ]
+  };
+
+  renderVals() {
+    return {
+      articles: this.state.articles,
+      addArticle: () => {
+        const newArticle = { id: 'a' + Date.now(), title: 'New Article', date: new Date().toLocaleDateString(), excerpt: '', status: 'Draft' };
+        this.setState(s => ({ articles: [newArticle, ...s.articles] }));
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{padding:var(--space-8);max-width:900px}
+.section{margin-bottom:var(--space-8)}
+h2{font-size:var(--fs-xl);margin-bottom:var(--space-4);color:var(--color-fg)}
+.logo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-bottom:var(--space-6)}
+.logo-item{background:var(--color-bg-alt);padding:var(--space-6);border-radius:var(--radius-1);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px}
+.logo-item img{max-width:100%;max-height:150px;margin-bottom:var(--space-4)}
+.logo-label{font-size:var(--fs-sm);font-weight:600;color:var(--color-fg);text-align:center;margin-bottom:var(--space-2)}
+.logo-desc{font-size:var(--fs-xs);color:var(--color-fg-muted);text-align:center}
+.usage{background:var(--color-bg);border:var(--border-1);padding:var(--space-4);border-radius:var(--radius-1);margin-bottom:var(--space-4)}
+.usage h3{font-size:var(--fs-base);margin:0 0 var(--space-2) 0;color:var(--color-fg)}
+.usage p{margin:0;font-size:var(--fs-sm);color:var(--color-fg-muted);line-height:1.6}
+.dont{color:#C5301A}
+.do{color:#3A7BD5}
+</style>
+</head>
+<body>
+<!-- @dsCard group="Brand" viewport="900x500" name="Logo System" -->
+<div class="section">
+<h2>AllyCMS Logo System</h2>
+<p style="color:var(--color-fg-muted);margin-bottom:var(--space-6)">Ghost mark with off-center blue dot + product name. Two primary lock-ups for flexible application.</p>
+
+<div class="logo-grid">
+<div class="logo-item">
+<img src="../assets/ally-cms-logo-ghost.png" alt="Ghost mark stacked" style="width:120px">
+<div class="logo-label">Ghost Mark (Icon)</div>
+<div class="logo-desc">Use alone as favicon, app icon, or mark</div>
+</div>
+
+<div class="logo-item">
+<img src="../assets/ally-cms-logo-horizontal.png" alt="Ghost mark with text horizontal" style="width:180px">
+<div class="logo-label">Horizontal Lock-up</div>
+<div class="logo-desc">Primary logo for headers, login, branding</div>
+</div>
+</div>
+
+<div class="usage">
+<h3>Eye Animation (Pulse)</h3>
+<p>The blue dot (eye) has a subtle pulse animation that repeats continuously. <strong>Spec:</strong> 2s duration, easing ease-in-out, opacity from 100% → 60% → 100%. Creates a "blinking" or "alive" effect. Applies when ghost is used as a loading indicator, on login page, or in interactive contexts. Static/no animation in smaller icon contexts (favicon, nav).</p>
+</div>
+
+<div class="usage">
+<h3 class="do">✓ Do</h3>
+<p>Use ghost mark on dark backgrounds (add white outline if needed). Place logo with breathing room—minimum 12px clear space on all sides. Scale proportionally. Use the pink + blue color combination consistently. Apply pulse animation to eye in interactive/loading states.</p>
+</div>
+
+<div class="usage">
+<h3 class="dont">✗ Don't</h3>
+<p>Do not change the ghost's proportions or rotation. Do not recolor the ghost or blue dot. Do not remove the dot or alter its position. Do not use in contexts where the ghost mark cannot be clearly seen (e.g., very small sizes below 32px).</p>
+</div>
+</div>
+</body>
+</html>

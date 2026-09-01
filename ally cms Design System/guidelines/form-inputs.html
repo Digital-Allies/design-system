@@ -1,0 +1,20 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Form Inputs" -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" href="../styles.css"></head>
+<body style="margin:0;padding:var(--space-6);background:var(--cms-bg);font-family:var(--font-body)">
+<h2 style="margin:0 0 var(--space-6) 0;font-size:var(--fs-lg);font-weight:700;color:var(--color-fg)">Form Inputs</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)">
+<div style="display:flex;flex-direction:column;gap:var(--space-4)">
+<div><label style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Text Input</label><input type="text" placeholder="Enter text" style="width:100%;padding:var(--space-3);border:var(--border-1);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box;background:var(--cms-input-bg);color:var(--color-fg)" /></div>
+<div><label style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Email Input</label><input type="email" placeholder="you@example.com" style="width:100%;padding:var(--space-3);border:var(--border-1);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box;background:var(--cms-input-bg);color:var(--color-fg)" /></div>
+<div><label style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Textarea</label><textarea placeholder="Enter longer content" style="width:100%;padding:var(--space-3);border:var(--border-1);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);min-height:100px;box-sizing:border-box;background:var(--cms-input-bg);color:var(--color-fg)"></textarea></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-4)">
+<div><label style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Select</label><select style="width:100%;padding:var(--space-3);border:var(--border-1);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box;background:var(--cms-input-bg);color:var(--color-fg)"><option>Choose option</option><option>Option 1</option><option>Option 2</option></select></div>
+<div><label style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Checkbox</label><div style="display:flex;gap:var(--space-2)"><input type="checkbox" id="c1" /><label for="c1" style="font-size:var(--fs-base);color:var(--color-fg);font-weight:400;text-transform:none;letter-spacing:normal;cursor:pointer">Remember me</label></div></div>
+<div><label style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Radio</label><div style="display:flex;gap:var(--space-3)"><div style="display:flex;gap:var(--space-2)"><input type="radio" id="r1" name="opt" /><label for="r1" style="font-size:var(--fs-base);color:var(--color-fg);font-weight:400;text-transform:none;letter-spacing:normal;cursor:pointer">Option A</label></div><div style="display:flex;gap:var(--space-2)"><input type="radio" id="r2" name="opt" /><label for="r2" style="font-size:var(--fs-base);color:var(--color-fg);font-weight:400;text-transform:none;letter-spacing:normal;cursor:pointer">Option B</label></div></div></div>
+</div>
+</div>
+</body>
+</html>

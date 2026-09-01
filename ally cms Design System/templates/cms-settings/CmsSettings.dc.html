@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AllyCMS Settings" description="Site configuration and branding settings" -->
+<helmet>
+<script src="./ds-base.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;background:var(--cms-bg);font-family:var(--font-body);color:var(--color-fg)">
+<aside style="width:280px;background:var(--cms-sidebar-bg);border-right:var(--border-1);overflow-y:auto;padding:var(--space-6)">
+<div style="margin-bottom:var(--space-8)"><div style="font-size:var(--fs-xs);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-6)">ally CMS</div>
+<nav style="display:flex;flex-direction:column;gap:var(--space-2)"><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms" onmouseover="this.style.background='var(--cms-item-active-bg)'" onmouseout="this.style.background='transparent'">Dashboard</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms" onmouseover="this.style.background='var(--cms-item-active-bg)'" onmouseout="this.style.background='transparent'">Pages</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms" onmouseover="this.style.background='var(--cms-item-active-bg)'" onmouseout="this.style.background='transparent'">Collections</a><a href="#" style="padding:var(--space-3) var(--space-4);background:var(--cms-item-active-bg);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-weight:600;font-size:var(--fs-sm)">Settings</a></nav></div>
+<div style="margin-top:auto;padding-top:var(--space-6);border-top:var(--border-1)"><div style="font-size:var(--fs-xs);color:var(--color-fg-soft);margin-bottom:var(--space-3)">User@example.com</div><button style="width:100%;padding:var(--space-2) var(--space-4);background:transparent;border:var(--border-1);border-radius:var(--radius-1);cursor:pointer;font-size:var(--fs-sm)">Sign out</button></div>
+</aside>
+<main style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+<header style="background:var(--cms-header-bg);border-bottom:var(--border-1);padding:var(--space-4) var(--space-6)"><h1 style="margin:0;font-size:var(--fs-lg);font-weight:700">Settings</h1></header>
+<div style="flex:1;overflow-y:auto;padding:var(--space-6)">
+<div style="max-width:900px">
+<div style="margin-bottom:var(--space-8)">
+<h2 style="margin:0 0 var(--space-4) 0;font-size:var(--fs-xl);font-weight:700">Branding</h2>
+<div style="background:var(--cms-block-list-bg);border:var(--border-1);border-radius:var(--radius-2);padding:var(--space-6)">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6)">
+<div><label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Site Title</span><input type="text" value="My Site" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-3);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label></div>
+<div><label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Site URL</span><input type="text" value="mysite.com" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-3);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label></div>
+</div>
+<div style="margin-bottom:var(--space-6)"><label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Logo</span><div style="border:2px dashed var(--color-hairline);border-radius:var(--radius-2);padding:var(--space-6);text-align:center;cursor:pointer">Drag or click to upload</div></label></div>
+<div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:var(--space-4);margin-bottom:var(--space-6)"><sc-for list="{{ brandColors }}" as="color" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:var(--space-2)"><label style="display:flex;flex-direction:column;gap:var(--space-1);font-size:var(--fs-xs)"><span style="font-weight:600">{{ color.label }}</span><div style="display:flex;gap:var(--space-2)"><input type="color" value="{{ color.value }}" style="width:100%;height:44px;border:var(--border-1);border-radius:var(--radius-1);cursor:pointer" /><input type="text" value="{{ color.value }}" style="flex:1;background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-mono);font-size:var(--fs-xs);box-sizing:border-box" /></div></label></div></sc-for></div>
+<button style="width:100%;padding:var(--space-3);background:var(--color-accent);color:white;border:none;border-radius:var(--radius-1);cursor:pointer;font-weight:600;font-size:var(--fs-sm)">Save Changes</button>
+</div>
+</div>
+
+<div style="margin-bottom:var(--space-8)">
+<h2 style="margin:0 0 var(--space-4) 0;font-size:var(--fs-xl);font-weight:700">General</h2>
+<div style="background:var(--cms-block-list-bg);border:var(--border-1);border-radius:var(--radius-2);padding:var(--space-6)">
+<div style="margin-bottom:var(--space-4)"><label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Meta Description</span><textarea style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-3);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);min-height:80px;box-sizing:border-box">Site description for search engines</textarea></label></div>
+<button style="width:100%;padding:var(--space-3);background:var(--color-accent);color:white;border:none;border-radius:var(--radius-1);cursor:pointer;font-weight:600;font-size:var(--fs-sm)">Save Changes</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1400px&quot;,&quot;height&quot;:&quot;900px&quot;}}">
+class Component extends DCLogic {
+  state = {
+    brandColors: [
+      { label: 'Primary', value: '#3A7BD5' },
+      { label: 'Accent', value: '#C5301A' },
+      { label: 'Background', value: '#F9F6F0' },
+      { label: 'Text', value: '#2D2D2D' }
+    ]
+  };
+
+  renderVals() {
+    return {
+      brandColors: this.state.brandColors
+    };
+  }
+}
+
+</script>
+</body>
+</html>

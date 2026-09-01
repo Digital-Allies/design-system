@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AllyCMS Pages" description="Page editor with block management system" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+@keyframes pulse-eye { 0%, 100% { opacity: 1 } 50% { opacity: 0.6 } }
+.eye-pulse { animation: pulse-eye 2s ease-in-out infinite }
+</style>
+</helmet>
+<div style="display:flex;height:100vh;background:var(--cms-bg);font-family:var(--font-body);color:var(--color-fg)">
+<aside style="width:280px;background:var(--cms-sidebar-bg);border-right:var(--border-1);overflow-y:auto;padding:var(--space-6)">
+<div style="margin-bottom:var(--space-8)"><h2 style="font-size:var(--fs-sm);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide);margin:0 0 var(--space-4) 0;color:var(--color-fg-soft)">Pages</h2><div style="display:flex;flex-direction:column;gap:var(--space-2)">{{ pages }}</div></div>
+<button style="width:100%;padding:var(--space-3) var(--space-4);background:var(--color-accent);color:white;border:none;border-radius:var(--radius-1);cursor:pointer;font-weight:600;font-size:var(--fs-sm)" onclick="{{ addPage }}">+ New Page</button>
+</aside>
+<main style="flex:1;display:flex;flex-direction:column">
+<header style="background:var(--cms-header-bg);border-bottom:var(--border-1);padding:var(--space-4) var(--space-6);display:flex;justify-content:space-between;align-items:center">
+<div><h1 style="margin:0;font-size:var(--fs-lg);font-weight:700">{{ currentPageTitle }}</h1><p style="margin:var(--space-1) 0 0 0;font-size:var(--fs-xs);color:var(--color-fg-soft)">{{ currentPageSlug }}</p></div>
+<div style="display:flex;gap:var(--space-3)"><button style="padding:var(--space-2) var(--space-4);background:transparent;border:var(--border-1);border-radius:var(--radius-1);cursor:pointer;font-size:var(--fs-sm)">Save Draft</button><button style="padding:var(--space-2) var(--space-4);background:var(--color-accent);color:white;border:none;border-radius:var(--radius-1);cursor:pointer;font-weight:600;font-size:var(--fs-sm)">Publish</button></div>
+</header>
+<div style="flex:1;display:flex;overflow:hidden">
+<section style="flex:1;overflow-y:auto;padding:var(--space-6);background:var(--cms-editor-bg)">
+<div style="max-width:900px"><div style="background:var(--cms-block-list-bg);border:var(--border-1);border-radius:var(--radius-2);overflow:hidden;margin-bottom:var(--space-4)">{{ blocks }}</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));gap:var(--space-3);margin-top:var(--space-6)"><sc-for list="{{ blockTypes }}" as="blockType" hint-placeholder-count="5"><button style="padding:var(--space-3);background:var(--cms-block-btn-bg);border:var(--border-1);border-radius:var(--radius-1);cursor:pointer;font-size:var(--fs-xs);font-weight:600;transition:all 200ms" onclick="{{ addBlock }}">+ {{ blockType.label }}</button></sc-for></div></div>
+</section>
+<aside style="width:320px;background:var(--cms-panel-bg);border-left:var(--border-1);padding:var(--space-6);overflow-y:auto">
+<h3 style="margin:0 0 var(--space-4) 0;font-size:var(--fs-sm);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide)">Block Settings</h3>
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">{{ blockSettings }}</div>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1400px&quot;,&quot;height&quot;:&quot;900px&quot;}}">
+class Component extends DCLogic {
+  state = {
+    currentPageId: 'home',
+    pages: [
+      { id: 'home', title: 'Home', slug: 'home' },
+      { id: 'about', title: 'About', slug: 'about' },
+      { id: 'contact', title: 'Contact', slug: 'contact' }
+    ],
+    blocks: [
+      { id: 'b1', type: 'hero', title: 'Hero Section', data: { headline: 'Welcome', subheadline: '' } },
+      { id: 'b2', type: 'richtext', title: 'Text Block', data: { content: 'Add content here' } }
+    ],
+    selectedBlockId: 'b1',
+    blockTypes: [
+      { id: 'hero', label: 'Hero' },
+      { id: 'richtext', label: 'Text' },
+      { id: 'products', label: 'Products' },
+      { id: 'testimonials', label: 'Testimonials' },
+      { id: 'cta', label: 'CTA' },
+      { id: 'contact', label: 'Contact' }
+    ]
+  };
+
+  renderVals() {
+    const currentPage = this.state.pages.find(p => p.id === this.state.currentPageId) || this.state.pages[0];
+    const selectedBlock = this.state.blocks.find(b => b.id === this.state.selectedBlockId);
+
+    return {
+      currentPageTitle: currentPage.title,
+      currentPageSlug: currentPage.slug,
+      pages: this.state.pages.map(p => 
+        `<div style="padding:var(--space-3);background:${p.id === this.state.currentPageId ? 'var(--cms-item-active-bg)' : 'transparent'};border-radius:var(--radius-1);cursor:pointer;font-size:var(--fs-sm);font-weight:${p.id === this.state.currentPageId ? '700' : '500'}" onclick="window.__selectPage('${p.id}')">${p.title}</div>`
+      ).join(''),
+      blocks: this.state.blocks.map((b, i) =>
+        `<div style="padding:var(--space-4);border-bottom:var(--border-1);cursor:pointer;background:${b.id === this.state.selectedBlockId ? 'var(--cms-item-active-bg)' : 'transparent'};transition:background 200ms" onclick="window.__selectBlock('${b.id}')"><div style="display:flex;justify-content:space-between;align-items:center"><div><p style="margin:0;font-weight:600;font-size:var(--fs-sm)">${b.title}</p><p style="margin:var(--space-1) 0 0 0;font-size:var(--fs-xs);color:var(--color-fg-soft)">Type: ${b.type}</p></div><div style="display:flex;gap:var(--space-2)"><button style="background:none;border:none;cursor:pointer;color:var(--color-fg-soft)">⬆</button><button style="background:none;border:none;cursor:pointer;color:var(--color-fg-soft)">⬇</button><button style="background:none;border:none;cursor:pointer;color:var(--color-signal)">✕</button></div></div></div>`
+      ).join(''),
+      blockTypes: this.state.blockTypes,
+      blockSettings: selectedBlock ? [
+        `<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Block Type</span><span style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);color:var(--color-fg-soft)">${selectedBlock.type}</span></label>`,
+        `<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Title</span><input type="text" value="${selectedBlock.title}" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label>`,
+        selectedBlock.type === 'hero' ? `<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Headline</span><input type="text" value="${selectedBlock.data.headline}" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label>` : '',
+        selectedBlock.type === 'richtext' ? `<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Content</span><textarea style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);min-height:120px;box-sizing:border-box">${selectedBlock.data.content}</textarea></label>` : ''
+      ].filter(Boolean) : [],
+      addPage: () => {
+        const newPage = { id: Date.now().toString(), title: 'Untitled Page', slug: 'untitled-' + Date.now() };
+        this.setState(s => ({ pages: [...s.pages, newPage], currentPageId: newPage.id }));
+      },
+      addBlock: () => {
+        const newBlock = { id: 'b' + Date.now(), type: 'richtext', title: 'New Block', data: { content: '' } };
+        this.setState(s => ({ blocks: [...s.blocks, newBlock], selectedBlockId: newBlock.id }));
+      }
+    };
+  }
+
+  componentDidMount() {
+    window.__selectPage = (pageId) => this.setState({ currentPageId: pageId });
+    window.__selectBlock = (blockId) => this.setState({ selectedBlockId: blockId });
+  }
+}
+
+</script>
+</body>
+</html>

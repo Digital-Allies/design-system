@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AllyCMS Research" description="Research notes and documentation" -->
+<helmet>
+<script src="./ds-base.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;background:var(--cms-bg);font-family:var(--font-body);color:var(--color-fg)">
+<aside style="width:280px;background:var(--cms-sidebar-bg);border-right:var(--border-1);overflow-y:auto;padding:var(--space-6)">
+<div style="margin-bottom:var(--space-8)"><div style="font-size:var(--fs-xs);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-6)">ally CMS</div>
+<nav style="display:flex;flex-direction:column;gap:var(--space-2)"><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Dashboard</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Pages</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Collections</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Press Office</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Projects</a><a href="#" style="padding:var(--space-3) var(--space-4);background:var(--cms-item-active-bg);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-weight:600;font-size:var(--fs-sm)">Research</a><a href="#" style="padding:var(--space-3) var(--space-4);border-radius:var(--radius-1);text-decoration:none;color:var(--color-fg);font-size:var(--fs-sm);transition:background 200ms">Settings</a></nav></div>
+</aside>
+<main style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+<header style="background:var(--cms-header-bg);border-bottom:var(--border-1);padding:var(--space-4) var(--space-6);display:flex;justify-content:space-between;align-items:center">
+<div><h1 style="margin:0;font-size:var(--fs-lg);font-weight:700">Research</h1><p style="margin:var(--space-1) 0 0 0;font-size:var(--fs-xs);color:var(--color-fg-soft)">Knowledge base and research notes</p></div>
+<button style="padding:var(--space-2) var(--space-4);background:var(--color-accent);color:white;border:none;border-radius:var(--radius-1);cursor:pointer;font-weight:600;font-size:var(--fs-sm)" onclick="{{ addNote }}">+ New Note</button>
+</header>
+<div style="flex:1;display:flex;overflow:hidden">
+<section style="flex:1;overflow-y:auto;padding:var(--space-6);background:var(--cms-editor-bg)">
+<div style="max-width:900px">
+<div style="background:var(--cms-block-list-bg);border:var(--border-1);border-radius:var(--radius-2);overflow:hidden">
+<sc-for list="{{ notes }}" as="note" hint-placeholder-count="4">
+<div style="padding:var(--space-4);border-bottom:var(--border-1);cursor:pointer;transition:background 200ms" onmouseover="this.style.background='var(--cms-item-active-bg)'" onmouseout="this.style.background='transparent'">
+<div style="display:flex;justify-content:space-between;align-items:start"><div style="flex:1"><p style="margin:0 0 var(--space-1) 0;font-weight:600;font-size:var(--fs-sm)">{{ note.title }}</p><p style="margin:0 0 var(--space-2) 0;font-size:var(--fs-xs);color:var(--color-fg-soft)">{{ note.category }} · {{ note.date }}</p><p style="margin:0;font-size:var(--fs-xs);color:var(--color-fg-soft);line-height:1.5">{{ note.preview }}</p></div><span style="padding:4px 8px;background:var(--color-bg-alt);border-radius:var(--radius-1);font-size:var(--fs-xs);font-weight:600;white-space:nowrap">{{ note.tags }}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+<aside style="width:320px;background:var(--cms-panel-bg);border-left:var(--border-1);padding:var(--space-6);overflow-y:auto">
+<h3 style="margin:0 0 var(--space-4) 0;font-size:var(--fs-sm);font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-wide)">Note Editor</h3>
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Title</span><input type="text" placeholder="Note title" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label>
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Category</span><select style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box"><option>Design</option><option>Development</option><option>Product</option><option>Other</option></select></label>
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Content</span><textarea placeholder="Write your research notes here..." style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);min-height:150px;box-sizing:border-box"></textarea></label>
+<label style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--fs-xs)"><span style="font-weight:600">Tags</span><input type="text" placeholder="research, design, api" style="background:var(--cms-input-bg);border:var(--border-1);padding:var(--space-2);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" /></label>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1400px&quot;,&quot;height&quot;:&quot;900px&quot;}}">
+class Component extends DCLogic {
+  state = {
+    notes: [
+      { id: 'n1', title: 'CMS Architecture Overview', category: 'Development', date: 'Jul 24, 2026', preview: 'Key architectural decisions for the ally CMS platform including component hierarchy and data flow patterns...', tags: 'architecture' },
+      { id: 'n2', title: 'User Research Findings', category: 'Product', date: 'Jul 20, 2026', preview: 'Summary of user interviews conducted with 15 design and content teams about workflow preferences...', tags: 'research, ux' },
+      { id: 'n3', title: 'Design System Token Strategy', category: 'Design', date: 'Jul 18, 2026', preview: 'Documentation of token structure including color system, typography scale, and spacing system...', tags: 'design, tokens' },
+      { id: 'n4', title: 'Performance Optimization Notes', category: 'Development', date: 'Jul 15, 2026', preview: 'Analysis of current performance bottlenecks and proposed optimizations for real-time data sync...', tags: 'performance' }
+    ]
+  };
+
+  renderVals() {
+    return {
+      notes: this.state.notes,
+      addNote: () => {
+        const newNote = { id: 'n' + Date.now(), title: 'New Note', category: 'Other', date: new Date().toLocaleDateString(), preview: '', tags: '' };
+        this.setState(s => ({ notes: [newNote, ...s.notes] }));
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

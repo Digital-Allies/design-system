@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ally cms Design System — Index</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-body,sans-serif);background:var(--color-bone,#F9F6F0);color:#1a1a1a}
+header{padding:48px 48px 24px;border-bottom:1px solid #e3ddd2}
+h1{margin:0 0 4px;font-family:var(--font-headers,sans-serif);font-size:32px}
+header p{margin:0;opacity:.65}
+nav{display:flex;gap:0;flex-wrap:wrap;padding:0 48px;border-bottom:1px solid #e3ddd2;background:#fff}
+nav a{padding:16px 20px;text-decoration:none;color:#1a1a1a;font-size:14px;font-weight:600;border-bottom:2px solid transparent}
+nav a:hover{border-bottom-color:var(--color-signal,#C5301A)}
+main{padding:48px;max-width:960px;margin:0 auto}
+section{padding:40px 0;border-bottom:1px solid #e3ddd2}
+section:last-child{border-bottom:none}
+section h2{font-family:var(--font-headers,sans-serif);font-size:24px;margin:0 0 8px}
+section p.sub{opacity:.6;margin:0 0 20px}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+li a{color:var(--color-signal,#C5301A);text-decoration:none;font-size:15px}
+li a:hover{text-decoration:underline}
+.path{opacity:.45;font-size:13px;margin-left:8px;font-family:monospace}
+.tbd{opacity:.5;font-style:italic;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<div style="display:flex;justify-content:space-between;align-items:flex-start">
+  <div>
+    <h1>ally cms Design System</h1>
+    <p>Index of every project file and page, grouped by section.</p>
+  </div>
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border:1px solid #e3ddd2;border-radius:4px;color:#2D2D2D;text-decoration:none;font-size:13px;font-weight:600;font-family:var(--font-headers,sans-serif);box-shadow:0 1px 3px rgba(0,0,0,0.05)">
+    ← Back to Registry Hub
+  </a>
+</div>
+</header>
+<nav>
+<a href="#readme">Readme</a>
+<a href="#brand">Brand</a>
+<a href="#colors">Colors</a>
+<a href="#components">Components</a>
+<a href="#effect">Effect</a>
+<a href="#icons">Icons</a>
+<a href="#shapes">Shapes</a>
+<a href="#spacing">Spacing</a>
+<a href="#typography">Typography</a>
+<a href="#website">Website</a>
+</nav>
+<main>
+
+<section id="readme">
+<h2>Readme</h2>
+<ul>
+<li><a href="README.md">README.md</a><span class="path">/README.md</span></li>
+<li><a href="SKILL.md">SKILL.md</a><span class="path">/SKILL.md</span></li>
+<li><a href="github.md">github.md</a><span class="path">/github.md</span></li>
+</ul>
+</section>
+
+<section id="brand">
+<h2>Brand</h2>
+<ul>
+<li><a href="guidelines/brand.html">Brand Overview</a><span class="path">/guidelines/brand.html</span></li>
+<li><a href="guidelines/logos.html">Logos</a><span class="path">/guidelines/logos.html</span></li>
+<li><a href="assets/logos/">Logo assets</a><span class="path">/assets/logos/</span></li>
+</ul>
+</section>
+
+<section id="colors">
+<h2>Colors</h2>
+<ul>
+<li><a href="guidelines/colors.html">Primary Colors</a><span class="path">/guidelines/colors.html</span></li>
+<li><a href="guidelines/neutrals.html">Neutrals</a><span class="path">/guidelines/neutrals.html</span></li>
+<li><a href="tokens/colors.css">Color tokens (CSS)</a><span class="path">/tokens/colors.css</span></li>
+</ul>
+</section>
+
+<section id="components">
+<h2>Components</h2>
+<ul>
+<li><a href="components/core/core.card.html">Component specimen card</a><span class="path">/components/core/core.card.html</span></li>
+<li><a href="components/core/Button.jsx">Button</a><span class="path">/components/core/Button.jsx</span></li>
+<li><a href="components/core/Input.jsx">Input</a><span class="path">/components/core/Input.jsx</span></li>
+<li><a href="components/core/Card.jsx">Card</a><span class="path">/components/core/Card.jsx</span></li>
+<li><a href="guidelines/form-inputs.html">Form input patterns</a><span class="path">/guidelines/form-inputs.html</span></li>
+<li><a href="guidelines/block-panels.html">Block / panel patterns</a><span class="path">/guidelines/block-panels.html</span></li>
+</ul>
+</section>
+
+<section id="effect">
+<h2>Effect</h2>
+<ul>
+<li><a href="tokens/effects.css">Effect tokens (shadows, borders, transitions)</a><span class="path">/tokens/effects.css</span></li>
+</ul>
+<p class="tbd">No dedicated effects guideline card yet — would live at /guidelines/effects.html</p>
+</section>
+
+<section id="icons">
+<h2>Icons</h2>
+<p class="tbd">Not built yet — would live at /assets/icons/ with a card at /guidelines/icons.html</p>
+</section>
+
+<section id="shapes">
+<h2>Shapes</h2>
+<p class="tbd">Not built yet — would live at /assets/shapes/ with a card at /guidelines/shapes.html</p>
+</section>
+
+<section id="spacing">
+<h2>Spacing</h2>
+<ul>
+<li><a href="guidelines/spacing.html">Spacing scale</a><span class="path">/guidelines/spacing.html</span></li>
+<li><a href="tokens/spacing.css">Spacing tokens (CSS)</a><span class="path">/tokens/spacing.css</span></li>
+</ul>
+</section>
+
+<section id="typography">
+<h2>Typography</h2>
+<ul>
+<li><a href="guidelines/typography.html">Type scale</a><span class="path">/guidelines/typography.html</span></li>
+<li><a href="tokens/typography.css">Typography tokens (CSS)</a><span class="path">/tokens/typography.css</span></li>
+<li><a href="assets/fonts/">Font files (Lexend Deca)</a><span class="path">/assets/fonts/</span></li>
+</ul>
+</section>
+
+<section id="website">
+<h2>Website</h2>
+<ul>
+<li><a href="templates/cms-login/CmsLogin.dc.html">Login</a><span class="path">/templates/cms-login/CmsLogin.dc.html</span></li>
+<li><a href="templates/cms-dashboard/CmsDashboard.dc.html">Dashboard</a><span class="path">/templates/cms-dashboard/CmsDashboard.dc.html</span></li>
+<li><a href="templates/cms-pages/CmsPages.dc.html">Pages</a><span class="path">/templates/cms-pages/CmsPages.dc.html</span></li>
+<li><a href="templates/cms-collections/CmsCollections.dc.html">Collections</a><span class="path">/templates/cms-collections/CmsCollections.dc.html</span></li>
+<li><a href="templates/cms-press-office/CmsPressOffice.dc.html">Press Office</a><span class="path">/templates/cms-press-office/CmsPressOffice.dc.html</span></li>
+<li><a href="templates/cms-projects/CmsProjects.dc.html">Projects</a><span class="path">/templates/cms-projects/CmsProjects.dc.html</span></li>
+<li><a href="templates/cms-research/CmsResearch.dc.html">Research</a><span class="path">/templates/cms-research/CmsResearch.dc.html</span></li>
+<li><a href="templates/cms-settings/CmsSettings.dc.html">Settings</a><span class="path">/templates/cms-settings/CmsSettings.dc.html</span></li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>

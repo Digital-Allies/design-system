@@ -1,0 +1,31 @@
+:root {
+  /* Primary Brand Colors */
+  --color-signal-red: #C5301A;
+  --color-pulse-blue: #3A7BD5;
+  --color-pulse-blue-dark: #1D5FAD;
+  --color-light-pink: #FADEEB;
+  
+  /* Neutrals */
+  --color-bone-white: #F9F6F0;
+  --color-charcoal: #2D2D2D;
+  --color-pinned-note: #FCFAED;
+  
+  /* Semantic Text */
+  --color-text-muted: #6b6b6b;
+  --color-text-soft: #888888;
+  
+  /* Functional */
+  --color-grid-line: rgba(45, 45, 45, 0.07);
+  --color-hairline: rgba(45, 45, 45, 0.15);
+  
+  /* Semantic Aliases */
+  --color-bg: var(--color-bone-white);
+  --color-bg-alt: var(--color-pinned-note);
+  --color-fg: var(--color-charcoal);
+  --color-fg-muted: var(--color-text-muted);
+  --color-fg-soft: var(--color-text-soft);
+  --color-fg-on-dark: var(--color-bone-white);
+  --color-accent: var(--color-pulse-blue);
+  --color-accent-soft: var(--color-light-pink);
+  --color-signal: var(--color-signal-red);
+}

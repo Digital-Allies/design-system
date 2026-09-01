@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{padding:var(--space-6)}
+.color-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6)}
+.color-swatch{display:flex;flex-direction:column}
+.swatch{width:100%;height:100px;border:var(--border-1);margin-bottom:var(--space-3);border-radius:var(--radius-1)}
+.swatch-label{font-size:var(--fs-xs);font-weight:600;margin-bottom:var(--space-2)}
+.swatch-value{font-size:var(--fs-xs);color:var(--color-fg-soft);font-family:var(--font-mono)}
+</style>
+</head>
+<body>
+<!-- @dsCard group="Colors" viewport="700x300" name="Neutrals & Grays" -->
+<div class="color-grid">
+<div class="color-swatch">
+<div class="swatch-label">Bone White</div>
+<div class="swatch" style="background:#F9F6F0;border:var(--border-hairline)"></div>
+<div class="swatch-value">#F9F6F0</div>
+</div>
+<div class="color-swatch">
+<div class="swatch-label">Pinned Note</div>
+<div class="swatch" style="background:#FCFAED"></div>
+<div class="swatch-value">#FCFAED</div>
+</div>
+<div class="color-swatch">
+<div class="swatch-label">Charcoal</div>
+<div class="swatch" style="background:#2D2D2D"></div>
+<div class="swatch-value">#2D2D2D</div>
+</div>
+<div class="color-swatch">
+<div class="swatch-label">Text Muted</div>
+<div class="swatch" style="background:#6b6b6b"></div>
+<div class="swatch-value">#6b6b6b</div>
+</div>
+<div class="color-swatch">
+<div class="swatch-label">Text Soft</div>
+<div class="swatch" style="background:#888888"></div>
+<div class="swatch-value">#888888</div>
+</div>
+<div class="color-swatch">
+<div class="swatch-label">Hairline</div>
+<div class="swatch" style="background:rgba(45,45,45,0.15)"></div>
+<div class="swatch-value">rgba(45,45,45,0.15)</div>
+</div>
+</div>
+</body>
+</html>

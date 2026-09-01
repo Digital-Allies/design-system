@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="AllyCMS Login" description="Full-screen login page for AllyCMS admin dashboard" --><helmet><link rel="stylesheet" href="./ds-base.js"><script src="./ds-base.js"></script></helmet><div style="min-height:100vh;background:var(--cms-login-bg);display:flex;align-items:center;justify-content:center;padding:var(--space-6);transition:background 300ms" data-theme="{{ isDark ? 'dark' : 'light' }}"><div style="background:var(--cms-login-card-bg);border:var(--border-1);padding:var(--space-8);border-radius:var(--radius-2);max-width:480px;width:100%;box-shadow:var(--cms-login-shadow);transition:background 300ms,box-shadow 300ms"><div style="text-align:center;margin-bottom:var(--space-8)"><div style="font-size:var(--fs-4xl);font-weight:700;font-family:var(--font-headers);color:var(--color-fg);margin-bottom:var(--space-6)">ally cms</div><h1 style="font-size:var(--fs-2xl);margin:0 0 var(--space-2) 0;font-family:var(--font-headers);color:var(--color-charcoal)">Welcome back</h1><p style="margin:0;font-size:var(--fs-sm);color:var(--color-fg-muted)">Sign in to manage your content</p></div><form style="display:flex;flex-direction:column;gap:var(--space-4)"><div><label for="email" style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Email address</label><input type="email" id="email" placeholder="you@example.com" style="width:100%;padding:12px;border:var(--border-1);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" required></div><div><label for="password" style="display:block;font-size:var(--fs-xs);font-weight:600;text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--color-fg-soft);margin-bottom:var(--space-2)">Password</label><input type="password" id="password" placeholder="Enter your password" style="width:100%;padding:12px;border:var(--border-1);border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);box-sizing:border-box" required></div><button type="submit" style="padding:12px 16px;background:var(--color-accent);color:#fff;border:none;border-radius:var(--radius-1);font-family:var(--font-body);font-size:var(--fs-base);font-weight:600;cursor:pointer;transition:background 200ms">Sign in</button></form><div style="margin-top:var(--space-6);text-align:center;border-top:var(--border-1);padding-top:var(--space-6)"><p style="margin:0 0 var(--space-3) 0;font-size:var(--fs-sm)"><a href="#" style="color:var(--color-accent);text-decoration:none">Forgot password?</a></p><p style="margin:0;font-size:var(--fs-xs);color:var(--color-fg-muted)">Need an account? <a href="#" style="color:var(--color-accent);text-decoration:none">Contact your admin</a></p></div></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;480px&quot;,&quot;height&quot;:&quot;640px&quot;},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;light&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;tsType&quot;:&quot;'light'|'dark'&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  componentDidMount() {
+    const pref = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    this.setState({ theme: pref });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      this.setState({ theme: e.matches ? 'dark' : 'light' });
+    });
+  }
+  renderVals() {
+    const isDark = this.state.theme === 'dark';
+    return { isDark, toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })) };
+  }
+}
+</script>
+</body>
+</html>

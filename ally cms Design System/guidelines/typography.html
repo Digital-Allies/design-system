@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body{padding:var(--space-6)}
+.type-scale{display:flex;flex-direction:column;gap:var(--space-6)}
+.type-sample{display:flex;flex-direction:column;gap:var(--space-2)}
+.type-label{font-size:var(--fs-xs);font-weight:600;color:var(--color-fg-soft);text-transform:uppercase;letter-spacing:var(--tracking-wider)}
+.sample-display{font-family:var(--font-headers);font-weight:700;color:var(--color-fg)}
+.sample-body{font-family:var(--font-body);color:var(--color-fg)}
+</style>
+</head>
+<body>
+<!-- @dsCard group="Type" viewport="700x320" name="Typography Scale" -->
+<div class="type-scale">
+<div class="type-sample">
+<div class="type-label">Display / Headers (Lexend Deca 700)</div>
+<div class="sample-display" style="font-size:36px">The Quick Brown Fox</div>
+</div>
+<div class="type-sample">
+<div class="type-label">Heading 1 (Lexend Deca 700)</div>
+<div class="sample-display" style="font-size:30px">Heading Level One</div>
+</div>
+<div class="type-sample">
+<div class="type-label">Body / Details (JetBrains Mono 400)</div>
+<div class="sample-body" style="font-size:13px">The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.</div>
+</div>
+<div class="type-sample">
+<div class="type-label">Mono / Code (JetBrains Mono 400)</div>
+<div class="sample-body" style="font-size:12px;font-family:var(--font-mono)">const x = { color: '#C5301A' };</div>
+</div>
+</div>
+</body>
+</html>

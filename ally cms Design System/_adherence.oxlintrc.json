@@ -1,0 +1,220 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/core/**",
+              "doc-page.js"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Lexend Deca|JetBrains Mono))/i]",
+        "message": "Font not provided by the design system. Available: Lexend Deca, JetBrains Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|variant|disabled|onClick|className|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: children, variant, disabled, onClick, className."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|outline)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'outline'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|className|key|ref|className|style|children)$/]",
+        "message": "<Card> doesn't accept that prop. Declared props: children, className."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Input'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|error|disabled|placeholder|onChange|value|type|key|ref|className|style|children)$/]",
+        "message": "<Input> doesn't accept that prop. Declared props: label, error, disabled, placeholder, onChange, value, type."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Button": {
+        "replaces": []
+      },
+      "Card": {
+        "replaces": []
+      },
+      "Input": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--border-1",
+      "--border-hairline",
+      "--cms-grid-2xl",
+      "--cms-grid-3xl",
+      "--cms-grid-base",
+      "--cms-grid-lg",
+      "--cms-grid-md",
+      "--cms-grid-sm",
+      "--cms-grid-xl",
+      "--cms-grid-xs",
+      "--cms-login-bg",
+      "--cms-login-card-bg",
+      "--cms-login-shadow",
+      "--color-accent",
+      "--color-accent-soft",
+      "--color-bg",
+      "--color-bg-alt",
+      "--color-bone-white",
+      "--color-charcoal",
+      "--color-fg",
+      "--color-fg-muted",
+      "--color-fg-on-dark",
+      "--color-fg-soft",
+      "--color-grid-line",
+      "--color-hairline",
+      "--color-light-pink",
+      "--color-pinned-note",
+      "--color-pulse-blue",
+      "--color-pulse-blue-dark",
+      "--color-signal",
+      "--color-signal-red",
+      "--color-text-muted",
+      "--color-text-soft",
+      "--dur-base",
+      "--dur-quick",
+      "--ease-out",
+      "--font-body",
+      "--font-headers",
+      "--font-mono",
+      "--fs-2xl",
+      "--fs-3xl",
+      "--fs-4xl",
+      "--fs-base",
+      "--fs-lg",
+      "--fs-micro",
+      "--fs-nano",
+      "--fs-sm",
+      "--fs-xl",
+      "--fs-xs",
+      "--radius-1",
+      "--radius-pill",
+      "--shadow-lg",
+      "--shadow-pin",
+      "--shadow-sm",
+      "--space-10",
+      "--space-16",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-8",
+      "--tracking-normal",
+      "--tracking-wide",
+      "--tracking-wider"
+    ],
+    "tokenKinds": {
+      "--color-signal-red": "color",
+      "--color-pulse-blue": "color",
+      "--color-pulse-blue-dark": "color",
+      "--color-light-pink": "color",
+      "--color-bone-white": "color",
+      "--color-charcoal": "color",
+      "--color-pinned-note": "color",
+      "--color-text-muted": "font",
+      "--color-text-soft": "font",
+      "--color-grid-line": "color",
+      "--color-hairline": "color",
+      "--color-bg": "color",
+      "--color-bg-alt": "color",
+      "--color-fg": "color",
+      "--color-fg-muted": "color",
+      "--color-fg-soft": "color",
+      "--color-fg-on-dark": "color",
+      "--color-accent": "color",
+      "--color-accent-soft": "color",
+      "--color-signal": "color",
+      "--font-headers": "font",
+      "--font-body": "font",
+      "--font-mono": "font",
+      "--fs-nano": "spacing",
+      "--fs-micro": "spacing",
+      "--fs-xs": "spacing",
+      "--fs-sm": "spacing",
+      "--fs-base": "spacing",
+      "--fs-lg": "spacing",
+      "--fs-xl": "spacing",
+      "--fs-2xl": "spacing",
+      "--fs-3xl": "spacing",
+      "--fs-4xl": "spacing",
+      "--tracking-normal": "font",
+      "--tracking-wide": "font",
+      "--tracking-wider": "font",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-8": "spacing",
+      "--space-10": "spacing",
+      "--space-16": "spacing",
+      "--radius-1": "radius",
+      "--radius-pill": "radius",
+      "--shadow-sm": "shadow",
+      "--shadow-lg": "shadow",
+      "--shadow-pin": "shadow",
+      "--border-1": "color",
+      "--border-hairline": "color",
+      "--dur-quick": "other",
+      "--dur-base": "other",
+      "--ease-out": "other",
+      "--cms-login-bg": "color",
+      "--cms-login-card-bg": "color",
+      "--cms-login-shadow": "shadow",
+      "--cms-grid-base": "spacing",
+      "--cms-grid-xs": "color",
+      "--cms-grid-sm": "color",
+      "--cms-grid-md": "color",
+      "--cms-grid-lg": "color",
+      "--cms-grid-xl": "color",
+      "--cms-grid-2xl": "color",
+      "--cms-grid-3xl": "color"
+    },
+    "fontFamilies": [
+      "JetBrains Mono",
+      "Lexend Deca"
+    ]
+  }
+}
