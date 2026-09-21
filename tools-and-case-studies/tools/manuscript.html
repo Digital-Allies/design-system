@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MANUSCRIPT — Digital Allies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/da.css">
+</head>
+<body class="da" style="--tool-accent:var(--pulse)"><header class="nav"><div class="inner nav__in">
+    <a class="nav__logo" href="../index.html"><span class="pulse"></span><b>Digital Allies</b></a>
+    <nav><ul class="nav__links">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#tools" class="is-current">Tools</a></li>
+      <li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+    </ul></nav></div></header><div class="crumb"><div class="inner crumb__in"><a href="../index.html">Tools</a><span class="sep">/</span><span class="cur">MANUSCRIPT</span></div></div>
+  <section class="hero"><div class="inner"><div class="hero__grid">
+    <div data-reveal="left"><div class="hero__eyebrow">Tool · 03 / 08</div>
+      <h1 class="hero__title sentence">Write the book.<br><span class="b">TRACK</span><br>the world.</h1>
+      <p class="hero__tag">A manuscript editor that remembers everything.</p></div>
+    <div class="hero__art" data-reveal="right"><img src="../assets/img/icon-manuscript.png" alt="" loading="lazy" style="width:100%;max-width:500px"></div>
+  </div></div></section>
+  <section class="app-wrap"><div class="inner">
+    <div class="lead" style="margin-bottom:1.6rem">A manuscript editor with structured notes for characters, places, and concepts. Built for multi-book series — the world stays consistent across every volume.</div>
+    <div class="frame"><div class="frame__bar"><span class="frame__dots"><i style="background:#ED6A5E"></i><i style="background:#F4BF50"></i><i style="background:#61C454"></i></span>
+      <span class="frame__url">https://app.digitalallies.net/manuscript</span>
+      <span class="frame__ico"><img src="../assets/img/icon-manuscript.png" alt="" style="width:16px;height:16px;object-fit:contain;display:block"></span></div>
+      <div class="frame__body"><div id="ms-app" class="app"><div class="appbar"><h2>Manuscript Suite</h2><p>Book development &amp; continuity workflow</p></div>
+    <div class="tabs">
+      <button class="tab active" data-tab="ms-editor">Editor &amp; Notes</button>
+      <button class="tab" data-tab="ms-vers">Versions</button>
+      <button class="tab" data-tab="ms-glo">Glossary</button>
+      <button class="tab" data-tab="ms-pub">Publish</button>
+    </div>
+    <div id="ms-editor" class="pane active">
+      <div class="cols2">
+        <div>
+          <div class="panel-h">Book editor</div>
+          <div class="field"><label class="fl">Book title</label><input id="ms-title" type="text" placeholder="e.g. To Kill a Mockingbird"></div>
+          <div class="field"><label class="fl">Book in series</label><select><option>Book 1</option><option>Book 2</option><option>Book 3</option><option>Standalone</option></select></div>
+          <div class="field"><label class="fl">Manuscript</label><textarea id="ms-body" style="min-height:120px" placeholder="Paste or write your book text here…"></textarea></div>
+          <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+            <span class="hint" id="ms-saved" style="margin:0">Auto-save on · not yet edited</span>
+            <button id="ms-snap" class="btn btn--solid" style="font-size:.72rem;padding:.45rem .8rem;margin-left:auto">Create snapshot</button>
+          </div>
+        </div>
+        <div>
+          <div class="panel-h">Notes &amp; concepts</div>
+          <form id="ms-gloss-form">
+            <div class="field"><label class="fl">Concept / term name</label><input id="ms-term" type="text" placeholder="e.g. The Abyss"></div>
+            <div class="field"><label class="fl">Definition or note</label><textarea id="ms-def" placeholder="Add definition, context, or development notes…"></textarea></div>
+            <button class="btn btn--solid" type="submit" style="font-size:.72rem;padding:.45rem .8rem">+ Add to glossary</button>
+          </form>
+          <div style="margin-top:1.1rem"><label class="fl">Recent notes</label><div id="ms-recent" style="border:1px solid var(--grid);min-height:60px"></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="ms-vers" class="pane"><div class="panel-h">Version snapshots</div><div id="ms-versions"></div></div>
+    <div id="ms-glo" class="pane"><div class="panel-h">Glossary &amp; continuity</div><div id="ms-gloss-list"></div></div>
+    <div id="ms-pub" class="pane"><div class="panel-h">Publish &amp; copyright</div>
+      <p style="font-size:.82rem;line-height:1.7;opacity:.85">Export a clean manuscript, a copyright registration packet, and a continuity report across every volume in the series.</p>
+      <div style="display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap"><button class="btn" style="font-size:.74rem;padding:.5rem .9rem">Export DOCX</button><button class="btn" style="font-size:.74rem;padding:.5rem .9rem">Copyright packet</button><button class="btn" style="font-size:.74rem;padding:.5rem .9rem">Continuity report</button></div>
+    </div></div></div></div>
+  </div></section>
+  <section><div class="inner">
+    <div class="section-label"><span>How it works</span><span>Three steps</span></div>
+    <div class="steps">
+      <div class="step-card" data-reveal="up" style="transition-delay:0s"><div class="step-card__n">1</div><h4>Start writing</h4><p>Draft in the built-in editor — autosaved continuously as you go.</p></div>
+      <div class="step-card" data-reveal="up" style="transition-delay:.1s"><div class="step-card__n">2</div><h4>Log the world</h4><p>Characters, places, and concepts land in a searchable glossary.</p></div>
+      <div class="step-card" data-reveal="up" style="transition-delay:.2s"><div class="step-card__n">3</div><h4>Track every version</h4><p>Snapshot any draft and compare continuity across the whole series.</p></div>
+    </div>
+  </div></section>
+  <section class="detail"><div class="inner"><div class="detail__grid">
+    <div class="features"><div class="feature" data-reveal="up" style="transition-delay:0s"><div class="feature__ico"><i data-lucide="save" style="width:44px;height:44px" stroke-width="1.3"></i></div><h3>Auto-saved editor</h3><p>Drafts save continuously. Version snapshots on demand.</p></div><div class="feature" data-reveal="up" style="transition-delay:.1s"><div class="feature__ico"><i data-lucide="users" style="width:44px;height:44px" stroke-width="1.3"></i></div><h3>Character + world notes</h3><p>Log characters, places, and concepts with glossary definitions.</p></div><div class="feature" data-reveal="up" style="transition-delay:.2s"><div class="feature__ico"><i data-lucide="library" style="width:44px;height:44px" stroke-width="1.3"></i></div><h3>Series + volume support</h3><p>Track continuity across books in a multi-volume series.</p></div></div>
+    <aside class="spec" data-reveal="right">
+      <div class="spec__block"><div class="spec__label">Who it's for</div><div class="spec__val">Independent authors working on multi-book projects</div></div>
+      <div class="spec__block"><div class="spec__label">Pricing</div><div class="spec__val strong">From $25 / mo</div></div>
+      <div class="spec__block"><div class="spec__label">What's included</div><div class="spec__val">Manuscript editor, notes system, glossary, version snapshots</div></div>
+      <div class="spec__block"><div class="spec__label">Status</div><div class="spec__status"><span class="pulse"></span>Available</div></div>
+    </aside>
+  </div></div></section>
+  <section><div class="inner"><div class="actions">
+    <a href="#" class="btn btn--primary">Get started <svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a>
+    <a href="../index.html" class="link-arrow">See all tools</a>
+  </div></div></section>
+  <nav class="pagenav"><div class="inner pagenav__in"><a href="cms.html"><svg class="arr" style="transform:scaleX(-1)" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg><span>Prev: CMS</span></a><a href="discovery.html"><span>Next: DISCOVERY</span><svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a></div></nav><footer class="foot"><div class="inner">© 2026 Digital Allies · Kingman, AZ · Serving Everywhere Else · digitalallies.net</div></footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="../assets/da.js"></script>
+</body></html>

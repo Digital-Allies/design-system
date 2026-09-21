@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Theater</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Roboto:wght@400;500&family=Noto+Sans:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#14b8a6; --ink:#111315; --ink-2:#0d0f11;
+  --fg:#e8e8e8; --muted:#8a8f98;
+  --curve:0px 10px 10px 0px;
+  --shadow-r:12px 0 20px -8px rgba(20,184,166,.4);
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--ink); color:var(--fg); font-family:'Roboto',sans-serif; line-height:1.6}
+a{text-decoration:none}
+.eyebrow{font-family:'League Spartan',sans-serif; font-size:.7rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--teal); display:inline-block; margin-bottom:.8rem}
+.nav{position:sticky; top:0; z-index:10; background:var(--ink); border-bottom:1px solid #14b8a633; padding:.7rem 1.4rem}
+.nav-in{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between}
+.nav-logo{font-family:'League Spartan',sans-serif; font-weight:700; letter-spacing:.05em; text-transform:uppercase; font-size:.85rem; color:var(--fg)}
+.nav-links{display:flex; gap:1.3rem; list-style:none; margin:0; padding:0}
+.nav-link{font-family:'League Spartan',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.nav-link.active{color:var(--teal)}
+.btn{display:inline-block; font-family:'Noto Sans',sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; border:none; border-radius:var(--curve)}
+.btn-primary{background:var(--teal); color:var(--ink)}
+.btn-secondary{background:#1b1f22; color:var(--fg); border:1px solid var(--teal)}
+.hero{padding:3rem 1.4rem 2.4rem}
+.hero-in{max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.3fr 1fr; gap:2rem; align-items:center}
+.hero h1{font-family:'League Spartan',sans-serif; font-size:clamp(1.8rem,4vw,2.6rem); font-weight:700; letter-spacing:.06em; line-height:1.15; text-transform:uppercase; margin:0 0 1rem}
+.hero p{color:var(--muted); font-size:.92rem; line-height:1.7; max-width:46ch; margin:0 0 1.4rem}
+.section{padding:2.2rem 1.4rem; max-width:1200px; margin:0 auto}
+.section-header{border:2px solid var(--teal); padding:.9rem 1.4rem; margin-bottom:1.6rem; box-shadow:0 0 10px rgba(20,184,166,.6), inset 0 0 10px rgba(20,184,166,.1); display:flex; align-items:center; gap:1rem}
+.section-header h2{font-family:'League Spartan',sans-serif; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:1.05rem; margin:0}
+.section-header span{color:var(--muted); font-size:.78rem; margin-left:auto}
+.kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.6rem}
+.kpi{border-top:1px solid var(--teal); border-right:1px solid var(--teal); border-bottom:1px solid var(--teal); border-radius:var(--curve); box-shadow:var(--shadow-r); padding:1rem}
+.kpi .l{font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:.4rem}
+.kpi .v{font-family:'League Spartan',sans-serif; font-size:1.6rem; font-weight:700; color:var(--teal)}
+.kpi .d{font-size:.7rem; color:var(--muted); margin-top:.3rem}
+.show-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem}
+.show{position:relative; aspect-ratio:2/3; border-top:2px solid var(--teal); border-right:2px solid var(--teal); border-bottom:2px solid var(--teal); border-radius:var(--curve); box-shadow:var(--shadow-r); overflow:hidden}
+.show img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.show .ov{position:absolute; inset-inline:0; bottom:0; padding:1rem; background:linear-gradient(to top,#111315 0%,#111315ee 45%,transparent 100%)}
+.show .cat{font-family:'League Spartan',sans-serif; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:.3rem}
+.show h3{font-family:'League Spartan',sans-serif; font-size:.92rem; letter-spacing:.04em; text-transform:uppercase; margin:0 0 .3rem}
+.show .date{font-size:.72rem; color:var(--muted); margin:0 0 .7rem}
+.show button{width:100%; padding:.55rem; font-family:'Noto Sans',sans-serif; font-weight:700; font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; background:var(--teal); color:var(--ink); border:none; border-radius:var(--curve)}
+.page{display:none}
+.page.active{display:block}
+.card{border-top:2px solid var(--teal); border-right:2px solid var(--teal); border-bottom:2px solid var(--teal); border-radius:var(--curve); box-shadow:var(--shadow-r); padding:1.4rem}
+.opp-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem}
+.opp .ico{color:var(--teal); margin-bottom:.7rem}
+.opp h3{font-family:'League Spartan',sans-serif; font-size:.88rem; letter-spacing:.05em; text-transform:uppercase; margin:0 0 .5rem}
+.opp p{font-size:.78rem; color:var(--muted); margin:0}
+.audition-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem}
+.audition-grid h3{font-family:'League Spartan',sans-serif; font-size:1rem; letter-spacing:.05em; text-transform:uppercase; margin:0 0 1rem}
+.audition-grid .up{font-family:'League Spartan',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:.3rem}
+.audition-grid .meta{font-size:.82rem; color:var(--muted); margin:0 0 .8rem}
+.event-list{display:flex; flex-direction:column; gap:.7rem}
+.event-row{display:grid; grid-template-columns:110px 1fr auto; gap:1rem; align-items:center; border-top:1px solid var(--teal); border-right:1px solid var(--teal); border-bottom:1px solid var(--teal); border-radius:var(--curve); padding:.8rem 1rem}
+.event-row .d{font-family:'League Spartan',sans-serif; font-size:.78rem; color:var(--teal); font-weight:700}
+.event-row .t{font-family:'League Spartan',sans-serif; font-size:.9rem; letter-spacing:.03em; text-transform:uppercase}
+.event-row .c{font-size:.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-top:.2rem; display:block}
+.event-row .p{font-size:.76rem; color:var(--muted); white-space:nowrap}
+.cal-split{display:grid; grid-template-columns:1fr 320px; gap:1.2rem; align-items:start}
+.cal-card{border:2px solid var(--teal); border-radius:8px; box-shadow:0 0 14px rgba(20,184,166,.35); padding:1.1rem; background:var(--ink)}
+.cal-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem}
+.cal-head h3{font-family:'League Spartan',sans-serif; font-size:1.15rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin:0}
+.cal-nav{display:flex; gap:.5rem; align-items:center}
+.cal-nav button{background:transparent; border:1px solid #2a2f33; color:var(--fg); width:28px; height:28px; border-radius:6px; cursor:pointer}
+.cal-nav .today{width:auto; padding:0 .8rem; font-family:'Noto Sans',sans-serif; font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase}
+.cal-grid{display:grid; grid-template-columns:repeat(7,1fr); gap:1px; background:#1b1f22; border:1px solid #1b1f22}
+.cal-dow{background:var(--ink); color:var(--muted); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; text-align:center; padding:.5rem 0}
+.cal-day{background:var(--ink); min-height:64px; padding:.4rem; font-size:.72rem; color:var(--muted); position:relative}
+.cal-day.other{color:#3a3f43}
+.cal-day.today{background:#0d2321}
+.cal-day .n{display:inline-flex; align-items:center; justify-content:center}
+.cal-day.today .n{background:var(--teal); color:var(--ink); border-radius:50%; width:20px; height:20px; font-weight:700}
+.cal-evt{margin-top:.35rem; font-size:.6rem; padding:.2rem .35rem; border-radius:2px; color:var(--ink); font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.cal-legend{display:flex; flex-wrap:wrap; gap:.9rem; margin-top:1rem; font-size:.66rem; color:var(--muted)}
+.cal-legend span{display:inline-flex; align-items:center; gap:.4rem}
+.cal-legend i{width:9px; height:9px; border-radius:2px; display:inline-block}
+.upcoming h3{font-family:'League Spartan',sans-serif; font-size:.95rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin:0 0 1rem}
+.upcoming-row{display:flex; gap:.8rem; align-items:flex-start; border-top:1px solid var(--teal); border-right:1px solid var(--teal); border-bottom:1px solid var(--teal); border-radius:var(--curve); padding:.7rem .9rem; margin-bottom:.7rem}
+.upcoming-row .date-badge{font-family:'League Spartan',sans-serif; color:var(--teal); text-align:center; flex:0 0 auto; width:34px}
+.upcoming-row .date-badge .mo{font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; display:block}
+.upcoming-row .date-badge .dd{font-size:1.1rem; font-weight:700; line-height:1.1}
+.upcoming-row .body{flex:1}
+.upcoming-row .ttl{font-family:'League Spartan',sans-serif; font-size:.86rem; letter-spacing:.02em; margin-bottom:.2rem}
+.upcoming-row .tm{font-size:.72rem; color:var(--muted); margin-bottom:.45rem}
+.upcoming-row .tag{display:inline-block; font-size:.6rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.15rem .5rem; border-radius:3px; color:var(--ink)}
+@media(max-width:900px){ .cal-split{grid-template-columns:1fr} }
+@media(max-width:760px){ .hero-in{grid-template-columns:1fr} .kpi-grid{grid-template-columns:1fr 1fr} .show-grid{grid-template-columns:1fr 1fr} .opp-grid{grid-template-columns:1fr 1fr} .audition-grid{grid-template-columns:1fr} .event-row{grid-template-columns:1fr; text-align:left} .cal-day{min-height:44px} }
+@media(max-width:520px){ .show-grid{grid-template-columns:1fr} .opp-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+  <div class="nav"><div class="nav-in">
+    <span class="nav-logo">Community Theater</span>
+    <ul class="nav-links">
+      <li class="nav-link active" data-page="home">Home</li>
+      <li class="nav-link" data-page="events">Find Your Event</li>
+      <li class="nav-link" data-page="community">Community Theater</li>
+    </ul>
+    <a href="#" class="btn btn-primary" style="padding:.55rem 1rem; font-size:.7rem">Buy Tickets</a>
+  </div></div>
+
+  <div id="page-home" class="page active">
+  <div class="hero"><div class="hero-in">
+    <div>
+    <span class="eyebrow">2026 Season Now On Sale</span>
+    <h1>Where every seat<br>is center stage</h1>
+    <p>Your community theater brings local stories to life. From soul-stirring drama to electrifying live music, experience performances that move you — in a venue built for intimacy.</p>
+    <div style="display:flex; gap:.8rem; flex-wrap:wrap">
+      <a href="#" class="btn btn-primary" style="padding:.8rem 1.6rem; font-size:.78rem">View Season</a>
+      <a href="#" class="btn btn-secondary" style="padding:.8rem 1.6rem; font-size:.78rem">Our Story</a>
+    </div>
+    </div>
+    <div style="border-top:2px solid var(--teal); border-right:2px solid var(--teal); border-bottom:2px solid var(--teal); border-radius:var(--curve); box-shadow:var(--shadow-r); overflow:hidden">
+      <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=700&q=80" alt="Ornate theater proscenium arch" style="width:100%; height:100%; object-fit:cover; display:block">
+    </div>
+  </div></div>
+
+  <div class="section">
+    <div class="section-header"><h2>Season Strategy</h2><span>Dashboard Overview</span></div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="l">Total Shows</div><div class="v">12</div><div class="d">Productions in the 2026 lineup</div></div>
+      <div class="kpi"><div class="l">Est. Attendance</div><div class="v">4,891</div><div class="d">Projected ticket sales, all shows</div></div>
+      <div class="kpi"><div class="l">Season Span</div><div class="v">3 MO</div><div class="d">February through April 2026</div></div>
+      <div class="kpi"><div class="l">Growth</div><div class="v">+24%</div><div class="d">Year-over-year attendance</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><h2>Upcoming Shows</h2><span>2026 Season</span></div>
+    <div class="show-grid">
+      <div class="show"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=500&q=80" alt="">
+        <div class="ov"><span class="cat">Community Theater</span><h3>A Streetcar Named Desire</h3><p class="date">Feb 28, 2026 · 7:30 PM</p><button>Get Tickets</button></div></div>
+      <div class="show"><img src="https://images.unsplash.com/photo-1758232589376-9f3db5aa371d?w=500&q=80" alt="">
+        <div class="ov"><span class="cat">Indie Film</span><h3>Indie Shorts Block: Vol. 1</h3><p class="date">Mar 6, 2026 · 7:00 PM</p><button>Get Tickets</button></div></div>
+      <div class="show"><img src="https://images.unsplash.com/photo-1770782986192-d786218838e6?w=500&q=80" alt="">
+        <div class="ov"><span class="cat">Community Theater</span><h3>The Rocky Horror Picture Show</h3><p class="date">Mar 12, 2026 · 11:00 PM</p><button>Get Tickets</button></div></div>
+    </div>
+  </div>
+  </div>
+
+  <div id="page-events" class="page">
+  <div class="section" style="padding-top:2.4rem">
+    <div class="section-header"><h2>Find Your Event</h2><span>2026 Season Schedule</span></div>
+    <div class="cal-split">
+      <div class="cal-card">
+        <div class="cal-head">
+          <h3>February 2026</h3>
+          <div class="cal-nav"><button class="today">Today</button><button>&lsaquo;</button><button>&rsaquo;</button></div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day other"></div><div class="cal-day other"></div><div class="cal-day other"></div><div class="cal-day other"></div><div class="cal-day other"></div><div class="cal-day other"></div><div class="cal-day"><span class="n">1</span></div>
+          <div class="cal-day"><span class="n">2</span></div><div class="cal-day"><span class="n">3</span></div><div class="cal-day"><span class="n">4</span></div><div class="cal-day"><span class="n">5</span></div><div class="cal-day"><span class="n">6</span></div><div class="cal-day"><span class="n">7</span></div><div class="cal-day"><span class="n">8</span></div>
+          <div class="cal-day"><span class="n">9</span></div><div class="cal-day"><span class="n">10</span></div><div class="cal-day"><span class="n">11</span></div><div class="cal-day"><span class="n">12</span></div><div class="cal-day"><span class="n">13</span></div><div class="cal-day"><span class="n">14</span></div><div class="cal-day"><span class="n">15</span></div>
+          <div class="cal-day"><span class="n">16</span></div><div class="cal-day"><span class="n">17</span></div><div class="cal-day"><span class="n">18</span></div><div class="cal-day"><span class="n">19</span></div><div class="cal-day"><span class="n">20</span></div><div class="cal-day"><span class="n">21</span></div><div class="cal-day"><span class="n">22</span></div>
+          <div class="cal-day"><span class="n">23</span></div><div class="cal-day"><span class="n">24</span></div><div class="cal-day"><span class="n">25</span></div><div class="cal-day"><span class="n">26</span></div><div class="cal-day"><span class="n">27</span></div><div class="cal-day"><span class="n">28</span><div class="cal-evt" style="background:#14b8a6">A Streetcar Named Desi…</div></div><div class="cal-day today"><span class="n">28</span></div>
+          <div class="cal-day other"><span class="n">1</span></div><div class="cal-day other"><span class="n">2</span></div><div class="cal-day other"><span class="n">3</span></div><div class="cal-day other"><span class="n">4</span></div><div class="cal-day other"><span class="n">5</span></div><div class="cal-day other"><span class="n">6</span></div><div class="cal-day other"><span class="n">7</span></div>
+        </div>
+        <div class="cal-legend">
+          <span><i style="background:#14b8a6"></i>Community Theater</span>
+          <span><i style="background:#e0a339"></i>Special Event</span>
+          <span><i style="background:#7c8cf0"></i>Indie Film</span>
+          <span><i style="background:#3aa0e0"></i>Conference</span>
+          <span><i style="background:#e35fa8"></i>Youth Theater</span>
+        </div>
+      </div>
+      <div class="upcoming">
+        <h3>Upcoming Events</h3>
+        <div class="upcoming-row"><div class="date-badge"><span class="mo">Mar</span><span class="dd">5</span></div><div class="body"><div class="ttl">Indie Shorts Block: Vol. 1</div><div class="tm">7:00 PM</div><span class="tag" style="background:#7c8cf0">Indie Film</span></div></div>
+        <div class="upcoming-row"><div class="date-badge"><span class="mo">Mar</span><span class="dd">6</span></div><div class="body"><div class="ttl">Creative Futures Summit</div><div class="tm">9:00 AM</div><span class="tag" style="background:#3aa0e0">Conference</span></div></div>
+        <div class="upcoming-row"><div class="date-badge"><span class="mo">Mar</span><span class="dd">11</span></div><div class="body"><div class="ttl">The Rocky Horror Picture Show</div><div class="tm">11:00 PM</div><span class="tag" style="background:#14b8a6">Community Theater</span></div></div>
+        <div class="upcoming-row"><div class="date-badge"><span class="mo">Mar</span><span class="dd">16</span></div><div class="body"><div class="ttl">Feature Screening: "After the Flood"</div><div class="tm">7:00 PM</div><span class="tag" style="background:#7c8cf0">Indie Film</span></div></div>
+        <div class="upcoming-row"><div class="date-badge"><span class="mo">Mar</span><span class="dd">17</span></div><div class="body"><div class="ttl">One-Act Festival</div><div class="tm">7:00 PM</div><span class="tag" style="background:#e35fa8">Youth Theater</span></div></div>
+        <div class="upcoming-row"><div class="date-badge"><span class="mo">Mar</span><span class="dd">20</span></div><div class="body"><div class="ttl">Local Nonprofit Leadership Forum</div><div class="tm">10:00 AM</div><span class="tag" style="background:#3aa0e0">Conference</span></div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="page-community" class="page">
+  <div class="section" style="padding-top:2.4rem">
+    <span class="eyebrow">Community Theater</span>
+    <h1 style="font-family:'League Spartan',sans-serif; font-size:clamp(1.6rem,3.6vw,2.3rem); font-weight:700; letter-spacing:.06em; text-transform:uppercase; line-height:1.15; margin:0 0 1rem">Your stage<br>your story</h1>
+    <p style="color:var(--muted); font-size:.9rem; line-height:1.7; max-width:56ch; margin:0 0 2rem">Our Community Theater Program welcomes performers of all ages and skill levels to participate in mainstage productions. From auditions to workshops, discover your place in our vibrant theater community.</p>
+
+    <div class="section-header"><h2>Get Involved</h2><span>Opportunities for All</span></div>
+    <div class="opp-grid" style="margin-bottom:2rem">
+      <div class="card opp"><h3>Auditions</h3><p>Audition for roles in our community productions. All experience levels welcome.</p></div>
+      <div class="card opp"><h3>Classes</h3><p>Develop your skills in acting, voice, movement, and more through ongoing classes.</p></div>
+      <div class="card opp"><h3>Workshops</h3><p>Intensive workshops covering specialized techniques and performance styles.</p></div>
+      <div class="card opp"><h3>Crew &amp; Tech</h3><p>Join our backstage crew to learn lighting, sound, costumes, and set design.</p></div>
+    </div>
+
+    <div class="section-header"><h2>Auditions</h2><span>How to Audition</span></div>
+    <div class="audition-grid" style="margin-bottom:2rem">
+      <div class="card"><h3>First-Time Auditioners</h3>
+        <p style="color:var(--muted); font-size:.85rem; line-height:1.6; margin:0 0 1rem">Never auditioned before? No problem — we provide a supportive, encouraging environment.</p>
+        <p style="font-size:.82rem; color:var(--muted); margin:0 0 .4rem">● Prepare a 1–2 minute monologue from a published play</p>
+        <p style="font-size:.82rem; color:var(--muted); margin:0 0 .4rem">● Musical auditions require a song (16–32 bars)</p>
+        <p style="font-size:.82rem; color:var(--muted); margin:0">● Bring a headshot and resume (not required for first audition)</p>
+      </div>
+      <div class="card"><h3>Upcoming Auditions</h3>
+        <span class="up">Spring Musical — May 2026</span>
+        <p class="meta">Auditions: March 15–16, 2026 at 6:00 PM · Callbacks: March 18</p>
+        <span class="up">Summer Drama — June 2026</span>
+        <p class="meta">Auditions: April 20–21, 2026 at 6:00 PM · Callbacks: April 23</p>
+      </div>
+    </div>
+
+    <div class="section-header"><h2>Classes &amp; Workshops</h2><span>Build Your Skills</span></div>
+    <div class="opp-grid">
+      <div class="card opp"><h3>Acting Fundamentals</h3><p>Tuesdays, 7:00–9:00 PM · 8-week session</p></div>
+      <div class="card opp"><h3>Musical Theater Workshop</h3><p>Thursdays, 7:00–9:00 PM · 8-week session</p></div>
+      <div class="card opp"><h3>Scene Study</h3><p>Wednesdays, 7:00–9:00 PM · Ongoing</p></div>
+      <div class="card opp"><h3>Improvisation</h3><p>Saturdays, 10:00 AM–12:00 PM · Drop-in</p></div>
+    </div>
+  </div>
+  </div>
+
+<script>
+  document.querySelectorAll('.nav-link').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.querySelectorAll('.nav-link').forEach(function(l){ l.classList.remove('active'); });
+      link.classList.add('active');
+      document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+      document.getElementById('page-' + link.getAttribute('data-page')).classList.add('active');
+      window.scrollTo(0,0);
+    });
+  });
+</script>
+</body>
+</html>

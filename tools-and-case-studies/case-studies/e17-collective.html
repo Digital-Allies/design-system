@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — E17 Collective — Digital Allies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/da.css">
+<style>
+  .hero{overflow-x:hidden}
+  .hero__grid{position:relative}
+  .hero__grid > div:first-child{position:relative; z-index:2}
+  .hero__grid .hero__eyebrow,
+  .hero__grid .hero__title,
+  .hero__grid .hero__tag{opacity:.9}
+  .hero__grid .hero__title .b{color:var(--signal)}
+  .hero__grid .hero__tag{color:var(--charcoal)}
+  .cs-copy h2{color:var(--signal)}
+  .cs-stat:nth-child(1) .cs-stat__n,
+  .cs-stat:nth-child(3) .cs-stat__n{color:var(--signal)}
+  .cs-box{border:none; background:var(--pinned); position:relative; padding-top:2.1rem; box-shadow:0 2px 8px rgba(45,45,45,.08)}
+  .cs-box__pin{position:absolute; top:12px; left:50%; transform:translateX(-50%);
+    width:13px; height:13px; border-radius:50%; background:var(--signal); border:1px solid var(--charcoal);
+    box-shadow:0 2px 4px rgba(197,48,26,.35)}
+  .cs-box__label{color:var(--charcoal); opacity:1; font-size:.7rem}
+  .cs-box__val{color:var(--charcoal); opacity:1}
+  .lead{border:none; border-left:4px solid var(--signal); padding:.9rem 1rem .9rem 1.2rem; background:var(--bone)}
+  .hero__art{position:absolute; bottom:-34px; right:-8%;
+    width:56%; max-width:660px; z-index:1; pointer-events:none; opacity:1}
+  @media(max-width:840px){
+    .hero__art{position:static; width:100%; max-width:420px; margin-top:1rem; opacity:.9}
+  }
+
+  /* scroll reveal */
+  [data-reveal]{opacity:0; transition:transform .8s cubic-bezier(.16,1,.3,1), opacity .8s ease}
+  [data-reveal="left"]{transform:translateX(-36px)}
+  [data-reveal="right"]{transform:translateX(36px)}
+  [data-reveal="stack"]{transform:translateY(-22px)}
+  [data-reveal].in-view{opacity:1; transform:translate(0,0)}
+  @media(prefers-reduced-motion:reduce){
+    [data-reveal]{opacity:1; transform:none; transition:none}
+  }
+</style>
+</head>
+<body class="da"><header class="nav"><div class="inner nav__in">
+    <a class="nav__logo" href="../index.html"><span class="pulse"></span><b>Digital Allies</b></a>
+    <nav><ul class="nav__links">
+      <li><a href="../index.html#work" class="is-current">Work</a></li>
+      <li><a href="../index.html#tools">Tools</a></li>
+      <li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+    </ul></nav></div></header><div class="crumb"><div class="inner crumb__in"><a href="index.html">Work</a><span class="sep">/</span><span class="cur">E17 Collective</span></div></div>
+
+  <section class="hero" data-screen-label="Case Study — E17 Collective"><div class="inner"><div class="hero__grid">
+    <div><div class="hero__eyebrow">Case study · E17 Live-In Cooperative</div>
+      <h1 class="hero__title">E17 <span class="b">Collective</span></h1>
+      <p class="hero__tag">A live-in cooperative traded chore charts and group texts for a member intranet.</p></div>
+    <div class="hero__art"><img src="../assets/img/e17-house-crop.png" alt="Illustration of the E17 cooperative house" loading="lazy" style="width:100%;display:block"></div>
+  </div></div></section>
+
+  <section><div class="inner cs-grid">
+    <div class="cs-copy">
+      <h2 data-reveal="left">The challenge</h2>
+      <p data-reveal="left">E17 is a live-in cooperative running on shared labor and shared trust — grocery runs, cleaning rotations, and 15+ events a month, all coordinated by hand. Logistics kept failing quietly: chores fell through, event planning ran on group texts, and nobody had a clear read on who was responsible for what.</p>
+      <h2 data-reveal="right">The approach</h2>
+      <p data-reveal="right">The goal wasn't more process — it was less friction. We built a member-only intranet that puts the whole household's shared logistics in one place: grocery schedule, cleaning rotation, and the events calendar, all live and editable by any member.</p>
+      <h2 data-reveal="left">The result</h2>
+      <p data-reveal="left">Admin time dropped by three quarters, event planning got three times more efficient, and every member actually uses it — because it replaced the group chat instead of adding to it.</p>
+    </div>
+    <div class="cs-boxes">
+      <div class="cs-box" data-reveal="stack" style="transition-delay:0s"><span class="cs-box__pin"></span><div class="cs-box__label">Tools</div><div class="cs-box__val">Custom member intranet</div></div>
+      <div class="cs-box" data-reveal="stack" style="transition-delay:.1s"><span class="cs-box__pin"></span><div class="cs-box__label">Responsibilities</div><div class="cs-box__val">Product design &amp; build<br>Grocery &amp; cleaning schedule<br>Events calendar<br>Member onboarding</div></div>
+      <div class="cs-box" data-reveal="stack" style="transition-delay:.2s"><span class="cs-box__pin"></span><div class="cs-box__label">Project</div><div class="cs-box__val">E17 Collective — Member Intranet<br>Live-in cooperative</div></div>
+    </div>
+  </div></section>
+
+  <section class="app-wrap"><div class="inner">
+    <div class="lead" style="margin-bottom:1.6rem">The actual member portal — grocery schedule, cleaning rotation, and events, live below.</div>
+    <div class="frame"><div class="frame__bar"><span class="frame__dots"><i style="background:#ED6A5E"></i><i style="background:#F4BF50"></i><i style="background:#61C454"></i></span>
+      <span class="frame__url">e17collective.example/portal</span>
+      <span class="frame__ico"><img src="../assets/img/icon-cms.png" alt="" style="width:16px;height:16px;object-fit:contain;display:block"></span></div>
+      <div class="frame__body frame__body--embed"><iframe class="frame__embed" src="embeds/e17-app.html" title="E17 Collective member portal — live tool" loading="lazy" style="height:900px"></iframe></div>
+    </div>
+  </div></section>
+
+  <section><div class="inner">
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-stat__n">75%</div><div class="cs-stat__l">Reduction in admin time spent on shared logistics</div></div>
+      <div class="cs-stat"><div class="cs-stat__n">3×</div><div class="cs-stat__l">Improvement in event planning efficiency</div></div>
+      <div class="cs-stat"><div class="cs-stat__n">100%</div><div class="cs-stat__l">Member adoption — the portal replaced the group chat</div></div>
+    </div>
+  </div></section>
+
+  <section><div class="inner cs-quote">
+    <blockquote>"We stopped arguing about whose turn it was. It's just... on the schedule now."</blockquote>
+    <p>From an E17 member, on what changed after the portal replaced ad-hoc group texts for chores and events.</p>
+  </div></section>
+
+  <section><div class="inner"><div class="actions">
+    <a href="#" class="btn btn--primary" style="background:var(--signal)">Start a project <svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a>
+    <a href="../index.html" class="link-arrow">See all tools</a>
+  </div></div></section>
+
+  <nav class="pagenav"><div class="inner pagenav__in"><a href="community-theater.html"><svg class="arr" style="transform:scaleX(-1)" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg><span>Prev: Community Theater</span></a><span class="ghost mono">Next case study</span></div></nav>
+  <footer class="foot"><div class="inner">© 2026 Digital Allies · Kingman, AZ · Serving Everywhere Else · digitalallies.net</div></footer>
+<script src="../assets/da.js"></script>
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-reveal]');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.add('in-view');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, {threshold:.2, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body></html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://brand.digitalallies.net/00-master-index.html</loc>
+    <loc>https://brand.digitalallies.net/index.html</loc>
   </url>
   <url>
     <loc>https://brand.digitalallies.net/CMS_IMPLEMENTATION_PLAN.html</loc>
@@ -12,33 +12,28 @@
   <url>
     <loc>https://brand.digitalallies.net/brand-system.html</loc>
   </url>
+
+  <!-- CMS -->
   <url>
-    <loc>https://brand.digitalallies.net/cms/CMS_DASHBOARD_UI.html</loc>
+    <loc>https://brand.digitalallies.net/cms/index.html</loc>
   </url>
   <url>
     <loc>https://brand.digitalallies.net/cms/CMS_IMPLEMENTATION_PLAN.html</loc>
   </url>
   <url>
-    <loc>https://brand.digitalallies.net/cms/connected/CMS%20Build%20Plan.html</loc>
-  </url>
-  <url>
-    <loc>https://brand.digitalallies.net/cms/connected/Connected%20CMS%20-%2030-Day%20Run.html</loc>
-  </url>
-  <url>
-    <loc>https://brand.digitalallies.net/cms/connected/Connected%20CMS.html</loc>
-  </url>
-  <url>
-    <loc>https://brand.digitalallies.net/cms/connected/Digital%20Allies%20CMS.html</loc>
-  </url>
-  <url>
-    <loc>https://brand.digitalallies.net/cms/content-calendar.html</loc>
-  </url>
-  <url>
     <loc>https://brand.digitalallies.net/cms/dashboard.html</loc>
   </url>
   <url>
-    <loc>https://brand.digitalallies.net/cms/index.html</loc>
+    <loc>https://brand.digitalallies.net/cms/cms-preview.html</loc>
   </url>
+  <url>
+    <loc>https://brand.digitalallies.net/cms/page-editor.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/cms/ally-cms-design-system/index.html</loc>
+  </url>
+
+  <!-- Docs -->
   <url>
     <loc>https://brand.digitalallies.net/docs/17-modals-overlays.html</loc>
   </url>
@@ -63,9 +58,8 @@
   <url>
     <loc>https://brand.digitalallies.net/docs/32-github-structure.html</loc>
   </url>
-  <url>
-    <loc>https://brand.digitalallies.net/index.html</loc>
-  </url>
+
+  <!-- Preview -->
   <url>
     <loc>https://brand.digitalallies.net/preview/borders-shadows.html</loc>
   </url>
@@ -147,6 +141,11 @@
   <url>
     <loc>https://brand.digitalallies.net/preview/voice-tone-spectrum.html</loc>
   </url>
+
+  <!-- Slides -->
+  <url>
+    <loc>https://brand.digitalallies.net/slides/index.html</loc>
+  </url>
   <url>
     <loc>https://brand.digitalallies.net/slides/01-title.html</loc>
   </url>
@@ -168,24 +167,65 @@
   <url>
     <loc>https://brand.digitalallies.net/slides/07-end-card.html</loc>
   </url>
+
+  <!-- Social -->
   <url>
-    <loc>https://brand.digitalallies.net/slides/index.html</loc>
+    <loc>https://brand.digitalallies.net/social/index.html</loc>
   </url>
   <url>
     <loc>https://brand.digitalallies.net/social/index-print.html</loc>
   </url>
   <url>
-    <loc>https://brand.digitalallies.net/social/index.html</loc>
+    <loc>https://brand.digitalallies.net/social/social-media-highlights/recording-studio.html</loc>
   </url>
   <url>
-    <loc>https://brand.digitalallies.net/templates/index.html</loc>
+    <loc>https://brand.digitalallies.net/social/social-media-highlights/social-media-kit.html</loc>
   </url>
+
+  <!-- Tools & Case Studies -->
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/index.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/case-studies/community-theater.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/case-studies/e17-collective.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/audit.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/cms.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/manuscript.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/discovery.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/ledger.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/refresh.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/accessibility.html</loc>
+  </url>
+  <url>
+    <loc>https://brand.digitalallies.net/tools-and-case-studies/tools/book-suite.html</loc>
+  </url>
+
+  <!-- Templates -->
   <url>
     <loc>https://brand.digitalallies.net/templates/services-index/ServicesIndex.dc.html</loc>
   </url>
   <url>
     <loc>https://brand.digitalallies.net/templates/tool-detail/ToolDetail.dc.html</loc>
   </url>
+
+  <!-- UI Kits -->
   <url>
     <loc>https://brand.digitalallies.net/ui_kits/website/content-calendar.html</loc>
   </url>

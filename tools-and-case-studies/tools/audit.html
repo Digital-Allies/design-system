@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUDIT — Digital Allies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/da.css">
+</head>
+<body class="da" style="--tool-accent:var(--pulse)"><header class="nav"><div class="inner nav__in">
+    <a class="nav__logo" href="../index.html"><span class="pulse"></span><b>Digital Allies</b></a>
+    <nav><ul class="nav__links">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#tools" class="is-current">Tools</a></li>
+      <li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+    </ul></nav></div></header><div class="crumb"><div class="inner crumb__in"><a href="../index.html">Tools</a><span class="sep">/</span><span class="cur">AUDIT</span></div></div>
+  <section class="hero"><div class="inner"><div class="hero__grid">
+    <div data-reveal="left"><div class="hero__eyebrow">Tool · 01 / 08</div>
+      <h1 class="hero__title">SEO<br><span class="b">AUDIT.</span></h1>
+      <p class="hero__tag">Find the gaps in 90 seconds.</p></div>
+    <div class="hero__art" data-reveal="right"><img src="../assets/img/icon-audit.png" alt="" loading="lazy" style="width:100%;max-width:500px"></div>
+  </div></div></section>
+  <section class="app-wrap"><div class="inner">
+    <div class="lead" style="margin-bottom:1.6rem">Drop in your URL. I check the things search engines actually care about — schema markup, meta tags, headings, alt text, Core Web Vitals. You get a structured report you can act on.</div>
+    <div class="frame"><div class="frame__bar"><span class="frame__dots"><i style="background:#ED6A5E"></i><i style="background:#F4BF50"></i><i style="background:#61C454"></i></span>
+      <span class="frame__url">https://digitalallies.net/seo-audit</span>
+      <span class="frame__ico"><img src="../assets/img/icon-audit.png" alt="" style="width:16px;height:16px;object-fit:contain;display:block"></span></div>
+      <div class="frame__body"><div id="audit-app" class="app">
+  <div style="text-align:center;margin-bottom:1.5rem">
+    <img src="../assets/img/icon-audit.png" alt="" style="width:64px;height:64px;margin-bottom:.5rem">
+    <h2 style="font-size:1.5rem">SEO Audit Assistant</h2>
+    <p class="hint" style="font-size:.82rem">Analyze your website for missing SEO elements and get prioritized recommendations.</p>
+  </div>
+  <form id="audit-form" style="max-width:700px;margin:0 auto">
+    <div class="field"><label class="fl">Website URL</label><input id="audit-url" type="url" value="https://digitalallies.net"></div>
+    <div class="field"><label class="fl">Audit scope</label><div class="checks">
+      <label class="chk"><input type="checkbox" name="scope" value="meta" checked><span>Meta tags &amp; titles</span></label>
+      <label class="chk"><input type="checkbox" name="scope" value="alt" checked><span>Image alt text</span></label>
+      <label class="chk"><input type="checkbox" name="scope" value="head" checked><span>Heading structure</span></label>
+      <label class="chk"><input type="checkbox" name="scope" value="schema" checked><span>Schema markup</span></label>
+      <label class="chk"><input type="checkbox" name="scope" value="links" checked><span>Internal links</span></label>
+      <label class="chk"><input type="checkbox" name="scope" value="perf" checked><span>Performance</span></label>
+    </div></div>
+    <div class="field"><label class="fl">Target keywords (optional)</label><input id="audit-kw" type="text" placeholder="e.g. digital marketing, seo services, web design"><div class="hint">We'll check if these appear in your titles and headings.</div></div>
+    <button class="btn btn--solid" type="submit" style="width:100%;justify-content:center">Run comprehensive audit</button>
+  </form>
+  <div id="audit-report" class="report"></div></div></div></div>
+  </div></section>
+  <section><div class="inner">
+    <div class="section-label"><span>How it works</span><span>Three steps</span></div>
+    <div class="steps">
+      <div class="step-card" data-reveal="up" style="transition-delay:0s"><div class="step-card__n">1</div><h4>Drop in your URL</h4><p>No signup required to watch a live scan run against your site.</p></div>
+      <div class="step-card" data-reveal="up" style="transition-delay:.1s"><div class="step-card__n">2</div><h4>Get a structured report</h4><p>Schema, meta, headings, alt text, and Core Web Vitals — scored and prioritized.</p></div>
+      <div class="step-card" data-reveal="up" style="transition-delay:.2s"><div class="step-card__n">3</div><h4>Fix what matters first</h4><p>The $45 follow-up walks through exactly what to change, in order.</p></div>
+    </div>
+  </div></section>
+  <section class="detail"><div class="inner"><div class="detail__grid">
+    <div class="features"><div class="feature" data-reveal="up" style="transition-delay:0s"><div class="feature__ico"><i data-lucide="file-search" style="width:44px;height:44px" stroke-width="1.3"></i></div><h3>Schema markup audit</h3><p>Full schema validation against Google structured-data specs.</p></div><div class="feature" data-reveal="up" style="transition-delay:.1s"><div class="feature__ico"><i data-lucide="smartphone" style="width:44px;height:44px" stroke-width="1.3"></i></div><h3>Mobile + Core Web Vitals</h3><p>LCP, CLS, and INP checked on mobile and desktop.</p></div><div class="feature" data-reveal="up" style="transition-delay:.2s"><div class="feature__ico"><i data-lucide="bot" style="width:44px;height:44px" stroke-width="1.3"></i></div><h3>AEO readiness check</h3><p>Optimized for AI and answer-engine discoverability.</p></div></div>
+    <aside class="spec" data-reveal="right">
+      <div class="spec__block"><div class="spec__label">Who it's for</div><div class="spec__val">Small businesses checking if their site is findable</div></div>
+      <div class="spec__block"><div class="spec__label">Pricing</div><div class="spec__val strong">Free first scan · $45 per follow-up</div></div>
+      <div class="spec__block"><div class="spec__label">What's included</div><div class="spec__val">Meta, headings, schema, alt text, Core Web Vitals report</div></div>
+      <div class="spec__block"><div class="spec__label">Status</div><div class="spec__status"><span class="pulse"></span>Available</div></div>
+    </aside>
+  </div></div></section>
+  <section><div class="inner"><div class="actions">
+    <a href="#" class="btn btn--primary">Get started <svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a>
+    <a href="../index.html" class="link-arrow">See all tools</a>
+  </div></div></section>
+  <nav class="pagenav"><div class="inner pagenav__in"><span class="ghost mono">Prev</span><a href="cms.html"><span>Next: CMS</span><svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a></div></nav><footer class="foot"><div class="inner">© 2026 Digital Allies · Kingman, AZ · Serving Everywhere Else · digitalallies.net</div></footer>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="../assets/da.js"></script>
+</body></html>

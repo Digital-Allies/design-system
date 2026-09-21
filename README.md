@@ -56,9 +56,11 @@ https://digitalallies.net to see the brand in production context.
 | `slides/01..07-*.html` | Seven 16:9 slide templates (title, section header, content light, comparison, big quote, stats, end card). |
 | `slides/index.html` | Gallery view of all slide templates. |
 | `slides/_slide.css` | Shared slide-shell tokens (header, footer, display type, dark/light themes). |
-| `social/` | Social carousel design canvas (`index.html`) composing Kingman, AEO, and Strategy slide sets. |
-| `cms/` | CMS dashboard mock + integration plan, wiring guide, and overview docs (Barcelona integration). |
+| `social/` | Social carousel design canvas (`index.html`), `social-media-highlights/` (Recording Studio, Social Media Kit), and `marketing-assets/` (organized social graphics library). |
+| `cms/` | CMS dashboard mock + integration plan, wiring guide, overview docs, and `ally-cms-design-system/` (tokens, components, templates, guidelines). |
+| `tools-and-case-studies/` | In-house tools (Audit, CMS, Manuscript, Discovery, Ledger, Refresh, Accessibility, Book Suite) and case studies (Community Theater, E17 Collective). Self-contained directory. |
 | `templates/services-index/`, `templates/tool-detail/` | CMS-ready Design Component (`.dc.html`) page templates: services landing page and tool detail page. |
+| `archive/` | Retired planning docs, legacy prototypes, and superseded files. Nothing deleted — kept for reference. |
 | `_ds_bundle.js` | Compiled bundle (auto-generated — do not edit). Load it to read exposed components from `window.DigitalAlliesDesignSystem_611984`. |
 
 > **Components vs. page partials.** Only `ContentCalendar` is an exposed,

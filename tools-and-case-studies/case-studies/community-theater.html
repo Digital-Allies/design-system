@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Community Theater — Digital Allies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/da.css">
+<style>
+  .hero{overflow-x:hidden}
+  .hero__grid{position:relative}
+  .hero__grid > div:first-child{position:relative; z-index:2}
+  .hero__art{position:absolute; bottom:-24px; right:2%;
+    width:40%; max-width:380px; z-index:1; pointer-events:none; opacity:1}
+  @media(max-width:840px){
+    .hero__art{position:static; width:100%; max-width:300px; margin-top:1rem; opacity:.9}
+  }
+  .hero__title .b{color:#14b8a6}
+  .cs-copy h2{color:var(--pulse)}
+  .cs-box{border:none; background:var(--pinned); position:relative; padding-top:2.1rem; box-shadow:0 2px 8px rgba(45,45,45,.08)}
+  .cs-box__pin{position:absolute; top:12px; left:50%; transform:translateX(-50%);
+    width:13px; height:13px; border-radius:50%; background:var(--signal); border:1px solid var(--charcoal);
+    box-shadow:0 2px 4px rgba(197,48,26,.35)}
+  .cs-box__label{color:var(--charcoal); opacity:1; font-size:.7rem}
+  .cs-box__val{color:var(--charcoal); opacity:1}
+
+  /* scroll reveal */
+  [data-reveal]{opacity:0; transition:transform .8s cubic-bezier(.16,1,.3,1), opacity .8s ease}
+  [data-reveal="left"]{transform:translateX(-36px)}
+  [data-reveal="right"]{transform:translateX(36px)}
+  [data-reveal="stack"]{transform:translateY(-22px)}
+  [data-reveal].in-view{opacity:1; transform:translate(0,0)}
+  @media(prefers-reduced-motion:reduce){
+    [data-reveal]{opacity:1; transform:none; transition:none}
+  }
+</style>
+</head>
+<body class="da"><header class="nav"><div class="inner nav__in">
+    <a class="nav__logo" href="../index.html"><span class="pulse"></span><b>Digital Allies</b></a>
+    <nav><ul class="nav__links">
+      <li><a href="../index.html#work" class="is-current">Work</a></li>
+      <li><a href="../index.html#tools">Tools</a></li>
+      <li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+    </ul></nav></div></header><div class="crumb"><div class="inner crumb__in"><a href="index.html">Work</a><span class="sep">/</span><span class="cur">Community Theater</span></div></div>
+
+  <section class="hero" data-screen-label="Case Study — Community Theater"><div class="inner"><div class="hero__grid">
+    <div><div class="hero__eyebrow">Case study · Community Theater</div>
+      <h1 class="hero__title">COMMUNITY<br><span class="b">THEATER.</span></h1>
+      <p class="hero__tag">A digital home for the community theater's 2026 season — not just a site, a system.</p></div>
+    <div class="hero__art"><img src="../assets/img/art-mask.png" alt="Comedy and tragedy theater mask illustration" loading="lazy" style="width:100%;display:block"></div>
+  </div></div></section>
+
+  <section><div class="inner cs-grid">
+    <div class="cs-copy">
+      <h2 data-reveal="left">The challenge</h2>
+      <p data-reveal="left">A working community theater had outgrown its legacy site. Show listings across community productions, indie film screenings, conferences, and youth theater were edited by hand, and nobody but the original builder could safely touch it.</p>
+      <h2 data-reveal="right">The approach</h2>
+      <p data-reveal="right">We rebuilt the site on a dynamic, collection-based architecture — every show, across every category, pulls from one structured event calendar, so a new listing takes minutes, not a developer. A season dashboard tracks attendance and ticket sales by category. Then we trained the staff on the editor, so updates don't wait on us.</p>
+      <h2 data-reveal="left">What we built</h2>
+      <p data-reveal="left">A fast, WCAG-accessible, mobile-first site for the 2026 season — plus a staff playbook so the team runs it themselves going forward.</p>
+    </div>
+    <div class="cs-boxes">
+      <div class="cs-box" data-reveal="stack" style="transition-delay:0s"><span class="cs-box__pin"></span><div class="cs-box__label">Tools</div><div class="cs-box__val">Custom event calendar · Google Workspace</div></div>
+      <div class="cs-box" data-reveal="stack" style="transition-delay:.1s"><span class="cs-box__pin"></span><div class="cs-box__label">Responsibilities</div><div class="cs-box__val">Web design &amp; build<br>Event calendar &amp; ticketing<br>Season dashboard<br>SEO / AEO<br>Accessibility (WCAG)<br>Staff training</div></div>
+      <div class="cs-box" data-reveal="stack" style="transition-delay:.2s"><span class="cs-box__pin"></span><div class="cs-box__label">Project</div><div class="cs-box__val">Community Theater — 2026 Season Launch</div></div>
+    </div>
+  </div></section>
+
+  <section class="app-wrap"><div class="inner">
+    <div class="lead" style="margin-bottom:1.6rem">The actual season site — event calendar, season dashboard, and upcoming shows across every category, live below.</div>
+    <div class="frame"><div class="frame__bar"><span class="frame__dots"><i style="background:#ED6A5E"></i><i style="background:#F4BF50"></i><i style="background:#61C454"></i></span>
+      <span class="frame__url">communitytheater.example</span>
+      <span class="frame__ico"><img src="../assets/img/art-mask.png" alt="" style="width:16px;height:16px;object-fit:contain;display:block"></span></div>
+      <div class="frame__body frame__body--embed"><iframe class="frame__embed" src="embeds/community-theater-site.html" title="Community Theater season site — live embed" loading="lazy" style="height:900px"></iframe></div>
+    </div>
+  </div></section>
+
+  <section><div class="inner">
+    <div class="cs-stats">
+      <div class="cs-stat"><div class="cs-stat__n">12</div><div class="cs-stat__l">Productions in the 2026 season lineup</div></div>
+      <div class="cs-stat"><div class="cs-stat__n">4,891</div><div class="cs-stat__l">Projected ticket sales across all shows</div></div>
+      <div class="cs-stat"><div class="cs-stat__n">+24%</div><div class="cs-stat__l">Year-over-year attendance growth</div></div>
+    </div>
+  </div></section>
+
+  <section><div class="inner cs-quote">
+    <blockquote>"Staff can post a new show themselves now. That used to mean a phone call to a developer."</blockquote>
+    <p>From the theater's front-of-house team, on what changed after launch. The new editor workflow replaced a legacy site that only one person could safely update.</p>
+  </div></section>
+
+  <section><div class="inner"><div class="actions">
+    <a href="#" class="btn btn--primary">Start a project <svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a>
+    <a href="../index.html" class="link-arrow">See all tools</a>
+  </div></div></section>
+
+  <nav class="pagenav"><div class="inner pagenav__in"><span class="ghost mono">Prev</span><a href="e17-collective.html"><span>Next: E17 Collective</span><svg class="arr" width="22" height="14" viewBox="0 0 22 14" fill="none"><line x1="0" y1="7" x2="19" y2="7" stroke-width="1.6"/><path d="M14 2l5 5-5 5" stroke-width="1.6"/></svg></a></div></nav>
+  <footer class="foot"><div class="inner">© 2026 Digital Allies · Kingman, AZ · Serving Everywhere Else · digitalallies.net</div></footer>
+<script src="../assets/da.js"></script>
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-reveal]');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.add('in-view');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, {threshold:.2, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body></html>
