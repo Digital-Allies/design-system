@@ -15,6 +15,11 @@ Old CMS planning docs and prototypes superseded by the `ally-cms-design-system`:
 - `atomic-finds-build-checklist.md` — Atomic Finds build checklist
 - `digital-allies-social-media-production-brief.md` — social media production brief
 - `workflow-template.md` — workflow template doc
+- `PAGE_EDITOR_SPEC.md` — early page editor specification (superseded by AF_PAGE_EDITOR_BUILD_PLAN.md)
+- `client-docs/` — early client onboarding and setup guides
+- `components/` — legacy CmsNav and DashboardCard component prototypes
+- `templates/` — legacy mobile-cms-admin prototype
+- `docs/` — duplicate snapshot of root docs (01-30) kept for reference
 
 ### `ui_kits-legacy/`
 Pre-template full-HTML CMS dashboard mockup, superseded by `templates/cms-dashboard` Design Component.
